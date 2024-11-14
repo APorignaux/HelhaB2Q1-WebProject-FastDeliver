@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 1em 6em;
+}
