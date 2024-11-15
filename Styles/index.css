@@ -1,104 +1,54 @@
-main{
-    height: 87.5vh;
-    width: 100vw;
-}
-
-header button {
-    background-color: #0c72bc;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    font-size: 13px;
-    width: 8%;
-}
-
-header button:hover {
-    cursor: pointer;
-}
-
 #suivi_de_colis{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 30vh;
+    height: 45vh;
     background: rgb(128,194,254);
     background: linear-gradient(93deg, rgba(128,194,254,1) 20%, rgba(18,148,231,1) 65%);
 }
 
-#suivi_de_colis > h1, #suivi_de_colis > p{
+#suivi_de_colis h1{
+    font-size: 80px;
+    margin: 15% 10% 5%;
+    text-align: center;
     color: white;
-    margin-bottom: 1.5%;
 }
 
-#suivi_de_colis > form{
+#suivi_de_colis p{
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+#suivi_de_colis form {
     display: flex;
-    font-size: 2em;
-    width: 30%;
-    height: 15%;
-    justify-content: space-between;
+    flex-direction: column;
+    width: 85%;
+    margin-left: 10%;
+    margin-right: 10%;
+    align-items: center;
+    height: 40%;
 }
 
 #suivi_de_colis form input{
-    width: 70%;
-    padding: 10px;
-    font-size: 15px;
-    border: none;
-    border-radius: 3px;
+    width: 100%;
+    font-size: 30px;
+    margin-bottom: 2.5%;
+    height: 100px;
+    border-radius: 10px;
+    padding-left: 10px;
+    box-sizing: border-box; /* Ensure padding does not increase the size */
 }
 
 #suivi_de_colis form button{
-    color: white;
-    background-color: #01c09d;
-    border: none;
-    border-radius: 3px;
-    font-size: 10px;
-    width: 23%;
-}
-
-#suivi_de_colis form button:hover{
-    cursor: pointer;
-}
-
-#infos {
-    display: flex;
-    background: #f6f7fa;
-    justify-content: space-evenly;
     width: 100%;
-    height: 35vh;
-}
-
-#infos > div{
-    margin-top: 4%;
-    margin-bottom: 4%;
-    background: white;
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#infos > div > *{
-    margin: 1%;
-}
-
-#infos div h2{
-    font-size: 18px;
-}
-
-#infos div p{
-    font-size: 15px;
-    color: #a8abaa;
-}
-
-#infos img{
-    width: 40px;
-    height: 40px;
-}
-
-#blanc{
-    background: white;
+    height: 10.0px;
+    font-size: 30px;
+    background-color: #00c09f;
+    color: white;
+    border: none;
+    margin-bottom: 5%;
+    border-radius: 10px;
 }
