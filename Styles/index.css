@@ -1,6 +1,19 @@
 main{
-    height: 86vh;
+    height: 87.5vh;
     width: 100vw;
+}
+
+header button {
+    background-color: #0c72bc;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 13px;
+    width: 8%;
+}
+
+header button:hover {
+    cursor: pointer;
 }
 
 #suivi_de_colis{
@@ -22,7 +35,7 @@ main{
     display: flex;
     font-size: 2em;
     width: 30%;
-    height: 18%;
+    height: 15%;
     justify-content: space-between;
 }
 
@@ -41,6 +54,10 @@ main{
     border-radius: 3px;
     font-size: 10px;
     width: 23%;
+}
+
+#suivi_de_colis form button:hover{
+    cursor: pointer;
 }
 
 #infos {
@@ -66,6 +83,15 @@ main{
 
 #infos > div > *{
     margin: 1%;
+}
+
+#infos div h2{
+    font-size: 18px;
+}
+
+#infos div p{
+    font-size: 15px;
+    color: #a8abaa;
 }
 
 #infos img{
