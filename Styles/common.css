@@ -13,17 +13,19 @@ header{
     font-size: 30px;
 }
 
-/*header button {
+header button {
     background-color: #0c72bc;
     color: white;
     border: none;
     border-radius: 10px;
     font-size: 30px;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 3%;
+    padding-top:2%;
+    padding-bottom:2%;
+    margin-bottom: 3%;
     margin-right: 5%;
     width: 250px;
-}*/
+}
 
 header h1{
     //font-size: 2.5em;
@@ -61,6 +63,7 @@ footer{
         width: 100px;
         height: 3.5vh;
         margin-right: 10vw;
+        padding: 0;
     }
 
     header button:hover {
