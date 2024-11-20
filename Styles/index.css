@@ -3,21 +3,23 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 45vh;
+    height: 30vh;
     background: rgb(128,194,254);
     background: linear-gradient(93deg, rgba(128,194,254,1) 20%, rgba(18,148,231,1) 65%);
     padding-bottom: 15%;
+    padding-top: 10%;
 }
 
 #suivi_de_colis h1{
-    font-size: 6vw;
-    margin: 10% 5% 5%;
+    font-size: 50px;
+    width: 90%;
+    margin: 0 5% 5%;
     text-align: center;
     color: white;
 }
 
 #suivi_de_colis p{
-    font-size: 50px;
+    font-size: 35px;
     color: white;
     text-align: center;
     margin-bottom: 5%;
@@ -37,15 +39,16 @@
     width: 100%;
     font-size: 30px;
     margin-bottom: 2.5%;
-    height: 100px;
+    min-height: 100px;
     border-radius: 10px;
     padding-left: 10px;
+    border-style: none;
     box-sizing: border-box; //Ensure padding does not increase the size
 }
 
 #suivi_de_colis form button{
     width: 100%;
-    height: 100px;
+    min-height: 100px;
     font-size: 30px;
     background-color: #00c09f;
     color: white;
@@ -58,7 +61,7 @@
     display: flex;
     flex-direction: column;
     background: #f6f7fa;
-    background-color: red;
+    padding-top: 5%;
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
@@ -69,7 +72,7 @@
     margin-bottom: 4%;
     background: white;
     width: 90%;
-    height: 20vh;
+    height: 25vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -80,20 +83,21 @@
 
 #infos > div > *{
     margin: 1%;
+    text-align: center;
 }
 
 #infos div h2{
-    font-size: 18px;
+    font-size: 35px;
 }
 
 #infos div p{
-    font-size: 15px;
+    font-size: 30px;
     color: #a8abaa;
 }
 
 #infos img{
-    width: 40px;
-    height: 40px;
+    width: 100px;
+    height: 100px;
 }
 
 /*-------------------------LAPTOP-------------------------*/
@@ -205,5 +209,15 @@
 
 }
 
+/*-------------------------TABLET-------------------------*/
+@media screen and (max-width: 600px) {
+    body {
+        background-color: green;
+    }
+
+    header h1 {
+        font-size: 60px;
+    }
+}
 
 
