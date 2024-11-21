@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion - FastDeliver</title>
+    <link rel="stylesheet" href="./Styles/login.css">
+    <link rel="stylesheet" href="./Styles/common.css">
+</head>
+<body>
+<header>
+    <h1>FastDeliver</h1>
+</header>
+<main>
+    <div id = "formulaire" class="container">
+        <h2>Connexion</h2>
+        <form action="">
+            <div class="dropdown">
+            <label for="login">Login:</label>
+            <input type="email" id="login" name="login" placeholder="admin@fastdeliver.com" required>
+                <div class="dropdown-content">
+                    <p onclick="fillForm('admin@fastdeliver.com', '********')">admin@fastdeliver.com<br>********</p>
+                    <p onclick="fillForm('admin@admin.com', '********')">admin@admin.com<br>********</p>
+                </div>
+            </div>
+            <div class="dropdown">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password" placeholder="********" required>
+                <div class="dropdown-content">
+                    <p onclick="fillForm('admin@fastdeliver.com', '********')">admin@fastdeliver.com<br>********</p>
+                    <p onclick="fillForm('admin@admin.com', '********')">admin@admin.com<br>********</p>
+                </div>
+            </div>
+            <button type="submit">Se connecter</button>
+        </form>
+    </div>
+</main>
+<footer>
+    <p>&copy; 2024 FastDeliver - Tous droits réservés</p>
+</footer>
+</body>
+</html>
