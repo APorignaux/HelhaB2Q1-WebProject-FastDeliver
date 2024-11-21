@@ -1,3 +1,4 @@
+
 #suivi_de_colis{
     display: flex;
     flex-direction: column;
@@ -207,17 +208,6 @@
         height: 40px;
     }
 
-}
-
-/*-------------------------TABLET-------------------------*/
-@media screen and (400px <= width <= 700px) {
-    body {
-        background-color: green;
-    }
-
-    header h1 {
-        font-size: 60px;
-    }
 }
 
 
