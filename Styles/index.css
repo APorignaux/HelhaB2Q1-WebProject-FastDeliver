@@ -210,7 +210,7 @@
 }
 
 /*-------------------------TABLET-------------------------*/
-/*@media screen and (400px <= width <= 700px) {
+@media screen and (400px <= width <= 700px) {
     body {
         background-color: green;
     }
@@ -219,5 +219,5 @@
         font-size: 60px;
     }
 }
-*/
+
 

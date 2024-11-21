@@ -42,6 +42,7 @@ footer{
 
 @media screen and (min-width: 1000px){
     header{
+        height: 70px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -50,8 +51,6 @@ footer{
     header h1{
         font-size: 2vw;
         margin-left: 5vw;
-        margin-top: 0.5vh;
-        margin-bottom: 0.5vh;
     }
 
     header button {

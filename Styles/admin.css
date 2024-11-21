@@ -1,0 +1,9 @@
+header{
+    flex-direction: column;
+    align-items: center;
+}
+
+header button#adminButton, header button#logoutButton{
+    margin: 0 0 2vh 0;
+}
+
