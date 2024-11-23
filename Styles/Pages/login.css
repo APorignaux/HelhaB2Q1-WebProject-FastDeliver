@@ -1,11 +1,4 @@
-h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-}
-main {
 
-}
 body {
     background-color: #f5f5f5;
     margin: 0;
@@ -20,10 +13,13 @@ body {
     padding: 20px 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 20%;
+    min-width: 100px;
+    height: 25%;
     margin: 160px auto;
     display : flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 #formulaire h2 {
@@ -113,3 +109,5 @@ input[type="password"]:valid {
     background-color: #e9f0fe;
     border-color: #66cc66;
 }
+
+

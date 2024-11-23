@@ -44,7 +44,7 @@
     border-radius: 10px;
     padding-left: 10px;
     border-style: none;
-    box-sizing: border-box; //Ensure padding does not increase the size
+    box-sizing: border-box; /*Ensure padding does not increase the size*/
 }
 
 #suivi_de_colis form button{
