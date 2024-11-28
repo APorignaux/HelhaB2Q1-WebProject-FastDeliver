@@ -1,4 +1,192 @@
-$color: color(srgb 0.93 0.95 0.98);
+// Variables
+$primary-color: #0c72bc;
+$secondary-color: color(srgb 0.9177 0.3413 0.2683);
+$background-color: color(srgb 0.93 0.95 0.98);
+$font-size-large: 12px;
+$border-radius: 5px;
+$padding: 20px;
+$distanceBetweenButtons: 10px;
+
+// Mixin for button styles
+@mixin button-styles($bg-color) {
+  background-color: $bg-color;
+  color: white;
+  border: none;
+  border-radius: $border-radius;
+  font-size: $font-size-large;
+  margin-top: 5px;
+  padding: 5px 0;
+  height: 40px;
+  width: 130px;
+}
+
+// Styles
+body {
+  background-color: $background-color;
+  margin: 0 auto;
+  width: 100%;
+}
+
+header {
+  width: auto;
+  margin: 5px;
+  flex-direction: column;
+  align-items: center;
+
+  .headerBlockOne
+  , .headerBlockTwo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p{
+      font-size: 12px;
+      color: #b9b9b9;
+    }
+
+  }
+
+  button.adminButton, button.logoutButton {
+    margin: 10px auto;
+    padding: 5px;
+  }
+
+  button.logoutButton {
+    background-color: $secondary-color;
+    width: 110px;
+  }
+}
+
+main {
+  flex: 1;
+  background-color: white;
+  margin: 15px;
+  border-radius: $border-radius;
+
+  h1{
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  button.addColisButton {
+    margin-bottom: 50px;
+  }
+
+  > * {
+    padding: $padding;
+  }
+
+  input.SearchBarInput {
+    width: 100%;
+    font-size: $font-size-large;
+    margin-bottom: 10px;
+    min-height: 45px;
+    border-radius: $border-radius;
+    border: 1px solid color(srgb 0.8962 0.9062 0.9018);
+    padding-left: 10px;
+    box-sizing: border-box;
+  }
+
+  div.DateAndTypeStatus {
+    > * {
+      width: 120px;
+      min-height: 45px;
+      border-radius: $border-radius;
+      text-align: center;
+      font-size: 12px;
+      border: 1px solid color(srgb 0.8962 0.9062 0.9018);
+    }
+
+    input.DateInput {
+      margin-left: $distanceBetweenButtons;
+    }
+  }
+
+  label {
+    display: none;
+  }
+
+  div.TableContrainer {
+    overflow-x: scroll;
+    max-width: 100%;
+  }
+}
+
+button.addColisButton {
+  @include button-styles($primary-color);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  border-spacing: 0;
+
+  caption {
+    caption-side: bottom;
+    padding: 10px;
+    font-weight: bold;
+  }
+
+  thead,
+  tfoot {
+    background-color: #fafafc;
+  }
+
+  tr {
+    border-bottom: 1px solid color(srgb 0.8962 0.9062 0.9018);
+  }
+
+  th,
+  td {
+    border: none;
+    padding: 8px 10px;
+    min-width: 100px;
+    height: 50px;
+  }
+
+  td:last-of-type {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  header{
+    margin: 0;
+
+    .headerBlockTwo{
+      margin-right: 55px;
+    }
+
+    .headerBlockOne
+    , .headerBlockTwo{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      p{
+        margin-right: 10px;
+      }
+    }
+  }
+
+  button.adminButton, button.logoutButton {
+    margin: 0;
+    padding: 5px;
+  }
+
+  div.h1andbuttonContainer{
+    display: flex;
+    justify-content: space-between;
+    button.addColisButton{
+      margin-top: 0;
+    }
+  }
+
+
+}
+
+/*$color: color(srgb 0.93 0.95 0.98);
 body{
   background-color: $color;
 }
@@ -22,6 +210,44 @@ button.logoutButton{
 main{
   flex: 1;
   background-color: white;
+  margin: 30px;
+  border-radius: 10px;
+}
+
+main > *{
+  padding: 20px;
+}
+
+button.addColisButton{
+  background-color: #0c72bc;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 30px;
+  margin-top: 3%;
+  padding-top:2%;
+  padding-bottom:2%;
+  margin-bottom: 3%;
+  margin-right: 5%;
+  width: 250px;
+}
+
+main input.SearchBarInput{
+  width: 100%;
+  font-size: 30px;
+  margin-bottom: 2.5%;
+  min-height: 100px;
+  border-radius: 10px;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+main div.DateAndTypeSelect > *{
+    width: 30%;
+    min-height: 60px;
+    border-radius: 10px;
+  text-align: center;
+
 }
 
 table {
@@ -52,3 +278,4 @@ td {
 td:last-of-type {
   text-align: center;
 }
+*/

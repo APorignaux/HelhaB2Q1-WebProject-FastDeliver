@@ -9,29 +9,41 @@
 </head>
 <body>
     <header>
-        <h1>FastDeliver</h1>
-        <button class="adminButton">Administration</button>
-        <p>Admin : jean Martin</p>
-        <button class="logoutButton">Déconnexion</button>
+        <div class="headerBlockOne">
+            <h1>FastDeliver</h1>
+            <button class="adminButton">Administration</button>
+        </div>
+        <div class="headerBlockTwo">
+            <p>Admin : jean Martin</p>
+            <button class="logoutButton">Déconnexion</button>
+        </div>
     </header>
     <main>
         <form class="gestionDesColis">
-            <h1>Gestion des colis</h1>
-            <button class="addColisButton">+ Nouveau colis</button>
+            <div class="h1andbuttonContainer">
+                <h1>Gestion des colis</h1>
+                <button class="addColisButton">+ Nouveau colis</button>
+            </div>
+
+            <br>
             <label for="searchBarColis"></label>
-            <input type="text" placeholder="rechercher un colis" id="searchBarColis">
-            <label for="status"></label>
-            <select name="status" id="status">
-                <option value="Tous les Status">Tous les Status</option>
-                <option value="en attente">En attente</option>
-                <option value="en cours">En cours</option>
-                <option value="livré">Livré</option>
-            </select>
-            <label for="colisDate"></label>
-            <input type="date" id="colisDate">
+            <input type="text" placeholder="rechercher un colis" id="searchBarColis" class="SearchBarInput">
+            <br>
+            <div class="DateAndTypeStatus">
+                <label for="status"></label>
+                <select name="status" id="status" class="SelectStatus">
+                    <option value="Tous les Status">Tous les Status</option>
+                    <option value="en attente">En attente</option>
+                    <option value="en cours">En cours</option>
+                    <option value="livré">Livré</option>
+                </select>
+                <label for="colisDate"></label>
+                <input type="date" id="colisDate" class="DateInput">
+            </div>
         </form>
-        <table>
-            <thead>
+        <div class="TableContrainer">
+            <table>
+                <thead>
                 <tr>
                     <th scope="col">N° de suivis</th>
                     <th scope="col">Date</th>
@@ -41,8 +53,8 @@
                     <th scope="col">Livreur</th>
                     <th scope="col">Actions</th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <tr>
                     <td>FD28465937BE</td>
                     <td>2024-11-11</td>
@@ -55,8 +67,9 @@
                         <button class="deleteButton">Supprimer</button>
                     </div></td>
                 </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </main>
     <footer>
       <p>&copy; 2024 FastDeliver - Tous droits réservés</p>
