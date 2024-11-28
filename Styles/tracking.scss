@@ -1,0 +1,29 @@
+@import "node_modules/progress-tracker/src/styles/progress-tracker";
+@import "variables";
+@import "mixins";
+
+
+.body {
+  .container {
+    max-width: 800px;
+    max-height: fit-content;
+    padding: $spacing;
+
+
+    .container-details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      .column{
+
+      }
+    }
+
+    .container-adresse {
+      display: flex;
+      background-color: $color-grey;
+      width: 100%;
+
+    }
+  }
+}

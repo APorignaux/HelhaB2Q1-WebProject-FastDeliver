@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suivi de colis - FastDeliver</title>
+    <link rel="stylesheet" href="../Styles/common.css">
+    <link rel="stylesheet" href="../Styles/tracking.scss">
+<body>
+ <div class="container">
+     <h1>Suivi du colis</h1>
+     <h2>N° ojr^fjreq</h2>
+     <h3>En livraison</h3>
+     <hr>
+     <div class="container-details">
+         <h1>Détails de livraison</h1>
+         <div class="grid">
+             <div class="column">
+                 <label id="label-data-estimated">Date estimée :</label>
+                 <data id="date-estimated"></data>
+             </div>
+             <div class="column">
+                 <label id="label-poids">Poids :</label>
+                 <data id="poids"></data>
+             </div>
+             <div class="column">
+                 <label id="label-destinataire">Destinataire :</label>
+                 <data id="destinataire"></data>
+             </div>
+         </div>
+     </div>
+     <div class="container-tracking">
+         <h1>Statut de livraison</h1>
+         <ul class="progress-tracker">
+             <li class="progress-step is-complete">
+                 <div class="progress-marker"></div>
+             </li>
+             <li class="progress-step is-complete">
+                 <div class="progress-marker"></div>
+             </li>
+             <li class="progress-step is-active">
+                 <div class="progress-marker"></div>
+             </li>
+             <li class="progress-step">
+                 <div class="progress-marker"></div>
+             </li>
+             <li class="progress-step">
+                 <div class="progress-marker"></div>
+             </li>
+         </ul>
+     </div>
+     <div class="container-adresse">
+         <h1>Adresse de livraison</h1>
+         Adresse
+     </div>
+ </div>
+</body>
+</html>
