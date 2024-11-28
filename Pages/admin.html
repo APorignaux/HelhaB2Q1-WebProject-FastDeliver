@@ -3,22 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <title>Administration - FastDeliver</title>
-    <link rel="stylesheet" href="../Styles/Pages/admin.css">
-   <link rel="stylesheet" href="../Styles/common.css">
+    <link rel="stylesheet" href="./Styles/admin.css">
+    <link rel="stylesheet" href="./Styles/common.css">
+    <link rel="stylesheet" href="./Styles/admin.scss">
 </head>
 <body>
-<header>
-    <h1>FastDeliver</h1>
-    <button id="adminButton">Administration</button>
-    <p>admin : jean Martin - example</p>
-    <button id="logoutButton">Déconnexion</button>
-</header>
-<main>
+    <header>
+        <div class="headerBlockOne">
+            <h1>FastDeliver</h1>
+            <button class="adminButton">Administration</button>
+        </div>
+        <div class="headerBlockTwo">
+            <p>Admin : jean Martin</p>
+            <button class="logoutButton">Déconnexion</button>
+        </div>
+    </header>
+    <main>
+        <form class="gestionDesColis">
+            <div class="h1andbuttonContainer">
+                <h1>Gestion des colis</h1>
+                <button class="addColisButton">+ Nouveau colis</button>
+            </div>
 
-
-</main>
-<footer>
-  <p>&copy; 2024 FastDeliver - Tous droits réservés</p>
-</footer>
+            <br>
+            <label for="searchBarColis"></label>
+            <input type="text" placeholder="rechercher un colis" id="searchBarColis" class="SearchBarInput">
+            <br>
+            <div class="DateAndTypeStatus">
+                <label for="status"></label>
+                <select name="status" id="status" class="SelectStatus">
+                    <option value="Tous les Status">Tous les Status</option>
+                    <option value="en attente">En attente</option>
+                    <option value="en cours">En cours</option>
+                    <option value="livré">Livré</option>
+                </select>
+                <label for="colisDate"></label>
+                <input type="date" id="colisDate" class="DateInput">
+            </div>
+        </form>
+        <div class="TableContrainer">
+            <table>
+                <thead>
+                <tr>
+                    <th scope="col">N° de suivis</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Client</th>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Livreur</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>FD28465937BE</td>
+                    <td>2024-11-11</td>
+                    <td>Jean Dupont</td>
+                    <td>123 Rue de la République, 69001 Lyon</td>
+                    <td>En livraison</td>
+                    <td>Marc Bernard</td>
+                    <td><div>
+                        <button class="editButton">Modifier</button>
+                        <button class="deleteButton">Supprimer</button>
+                    </div></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer>
+      <p>&copy; 2024 FastDeliver - Tous droits réservés</p>
+    </footer>
 </body>
 </html>
