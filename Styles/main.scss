@@ -1,9 +1,9 @@
 // Import des bases
-@import './variables';
-@import './mixins';
+@use './variables';
+@use './mixins';
 
 // Import des composants
-@import './common';
+@use './common';
 
 // Import des pages
-@import './edit-delivery';
+@use './edit-delivery';
