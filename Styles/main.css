@@ -5,52 +5,51 @@
 }
 
 header {
-  width: 100vw;
   display: flex;
   justify-content: space-between;
   background-color: white;
   color: black;
-  font-size: 30px;
+  font-size: 10px;
 }
-
 header button {
   background-color: #0c72bc;
   color: white;
   border: none;
-  border-radius: 10px;
-  font-size: 30px;
+  font-size: 12px;
   margin-top: 3%;
   padding-top: 2%;
   padding-bottom: 2%;
   margin-bottom: 3%;
   margin-right: 5%;
-  width: 250px;
+  width: 100px;
+  border-radius: 5px;
 }
-
+header button:hover {
+  cursor: pointer;
+}
 header h1 {
-  font-size: 30px;
   padding: 0.5em;
 }
 
 footer {
   display: flex;
   justify-content: center;
-  text-align: center;
   background-color: #282e30;
   color: lightgrey;
-  padding: 1em;
-  position: fixed;
-  left: 0;
+  padding: 1em 6em;
+  position: relative;
   bottom: 0;
-  width: 100%;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 800px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
   header {
     height: 70px;
-    display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
   }
   header h1 {
@@ -58,18 +57,13 @@ footer {
     margin-left: 5vw;
   }
   header button {
-    background-color: #0c72bc;
-    color: white;
-    border: none;
-    border-radius: 3px;
     font-size: 13px;
-    width: 100px;
     height: 3.5vh;
     margin-right: 10vw;
     padding: 0;
   }
-  header button:hover {
-    cursor: pointer;
+  main {
+    flex: 1;
   }
 }
 .container {
