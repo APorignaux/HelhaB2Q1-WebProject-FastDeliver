@@ -1,9 +1,10 @@
 // Import des bases
-@import './variables';
-@import './mixins';
+@use './variables';
+@use './mixins';
+@use "node_modules/progress-tracker/src/styles/progress-tracker";
 
 // Import des composants
-@import './common';
+@use './common';
 
 // Import des pages
-@import './edit-delivery';
+@use './edit-delivery';

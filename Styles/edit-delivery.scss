@@ -1,7 +1,7 @@
-@import "variables.scss";
-@import "mixins.scss";
+@use './variables.scss' as *;
+@use './mixins.scss' as *;
 
-.container {
+.div {
   max-width: 1200px;
   margin: 0 auto;
   padding: $spacing;
@@ -13,7 +13,7 @@
     margin-bottom: $spacing;
   }
 
-  .container-actions {
+  .actions {
     display: flex;
     justify-content: flex-end;
     gap: $spacing;
@@ -37,7 +37,7 @@
     }
   }
 
-  .container-grid {
+  .grid {
     display: flex;
     grid-template-columns: repeat(3, 1fr);
     justify-content: space-between;

@@ -83,55 +83,55 @@ footer {
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
-.container .container-actions {
+.container .actions {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
 }
-.container .container-actions button {
+.container .actions button {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
 }
-.container .container-actions button.annuler {
+.container .actions button.annuler {
   background-color: #dc3545;
   color: white;
 }
-.container .container-actions button.enregistrer {
+.container .actions button.enregistrer {
   background-color: #0c72bc;
   color: white;
 }
-.container .container-grid {
+.container .grid {
   display: flex;
   grid-template-columns: repeat(3, 1fr);
   justify-content: space-between;
   gap: 1rem;
 }
-.container .container-grid div {
+.container .grid div {
   flex: 1;
   background: #f9f9fb;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.container .container-grid div h1 {
+.container .grid div h1 {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
 }
-.container .container-grid div form {
+.container .grid div form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.container .container-grid div form label {
+.container .grid div form label {
   font-weight: bold;
   margin-bottom: 0.25rem;
 }
-.container .container-grid div form input,
-.container .container-grid div form select,
-.container .container-grid div form textarea {
+.container .grid div form input,
+.container .grid div form select,
+.container .grid div form textarea {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #ccc;

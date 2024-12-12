@@ -9,7 +9,11 @@
 <body>
     <header>
         <h1>FastDeliver</h1>
-        <button>Connexion</button>
+        <button id="button_connexion">Connexion</button>
+        <script>
+            document.getElementById('button_connexion').addEventListener('click', function() {
+            window.location.href = 'login.html';
+        });</script>
     </header>
     <main>
         <div id="suivi_de_colis">
@@ -24,7 +28,7 @@
             <div id="DivLivraison">
                 <img src="../Images/cartoonBoxImage.png" alt="colis">
                 <h2>Livraison Rapide</h2>
-                <p>Livraison gartanie en 24-48h</p>
+                <p>Livraison garantie en 24-48h</p>
             </div>
             <div id="DivSecurite">
                 <img src="../Images/lockImage.jpeg" alt="cadenas">
