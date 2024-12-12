@@ -1,0 +1,43 @@
+CREATE TABLE Users (
+Nom VARCHAR(20) NOT NULL,
+Email VARCHAR(30) NOT NULL CONSTRAINT EmailPK PRIMARY KEY,
+MotDePasse VARCHAR(100) NOT NULL,
+Role VARCHAR(20) NOT NULL
+);
+
+INSERT INTO Users (Nom, Email, MotDePasse, Role) VALUES
+('Jean Martin', 'admin@fastdeliver.com', 'hash', 'Administrateur'),
+('Emma Roux', 'emma@fastdeliver.com', 'hash', 'Livreur'),
+('Marc Bernard', 'marc@fastdeliver.com', 'hash', 'Livreur'),
+('Lucas Dubois', 'lucas@fastdeliver.com', 'hash', 'Livreur');
+
+CREATE TABLE Client (
+Nom VARCHAR(20) NOT NULL,
+Email VARCHAR(30) NOT NULL CONSTRAINT EmailClientPK PRIMARY KEY,
+Addresse VARCHAR(50)
+);
+
+INSERT INTO Client (Nom, Email, Addresse) VALUES
+('Jean Dupont', 'client1@example.com', '123 Rue de Paris, 75001 Paris'),
+('Marie Curie', 'client2@example.com', '45 Avenue des Champs, 75008 Paris'),
+('Paul Durand', 'client3@example.com', '78 Boulevard Haussmann, 75009 Paris'),
+('Lucie Martin', 'client4@example.com', '12 Rue de Lyon, 69003 Lyon'),
+('Sophie Bernard', 'client5@example.com', '56 Place Bellecour, 69002 Lyon');
+
+CREATE TABLE Livraisons (
+NumSuivis VARCHAR(20) NOT NULL CONSTRAINT NumSuivisPK PRIMARY KEY,
+Date VARCHAR(10) NOT NULL,
+ClientEmail VARCHAR(30) CONSTRAINT ClientFK FOREIGN KEY
+    REFERENCES Client(Email),
+Addresse VARCHAR(50) NOT NULL,
+Status VARCHAR(20) NOT NULL,
+Livreur VARCHAR(20) CONSTRAINT LivreurFK FOREIGN KEY
+    REFERENCES Users(Email)
+);
+
+INSERT INTO Livraisons (NumSuivis, Date, ClientEmail, Addresse, Status, Livreur) VALUES
+('FD28465937BE', '2024-12-01', 'client1@example.com', '123 Rue de Paris, 75001 Paris', 'En cours', 'admin@fastdeliver.com'),
+('FD34871902BE', '2024-12-02', 'client2@example.com', '45 Avenue des Champs, 75008 Paris', 'Livré', 'emma@fastdeliver.com'),
+('FD76458219BE', '2024-12-03', 'client3@example.com', '78 Boulevard Haussmann, 75009 Paris', 'En préparation', 'marc@fastdeliver.com'),
+('FD92103487BE', '2024-12-04', 'client4@example.com', '12 Rue de Lyon, 69003 Lyon', 'Annulé', 'lucas@fastdeliver.com'),
+('FD63578241BE', '2024-12-05', 'client5@example.com', '56 Place Bellecour, 69002 Lyon', 'En cours', 'emma@fastdeliver.com');
