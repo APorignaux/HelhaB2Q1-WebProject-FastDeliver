@@ -1,12 +1,28 @@
 import sqlite3 from 'sqlite3';
-sqlite3.verbose();
 import fs from 'fs';
+import bcrypt from 'bcrypt';
+
+sqlite3.verbose();
+
+//supprimer la db existante
+fs.unlink('./DataBase/database.sqlite', (err) => {
+    if (err) {
+        console.error('Erreur lors de la suppression de la base de données :', err.message);
+    } else {
+        console.log('Base de données SQLite3 supprimée avec succès.');
+    }
+});
+
+function hashPassword(password) {
+    return bcrypt.hashSync(password, 10);
+}
+
 
 // Nom du fichier de configuration SQL
-const configFilePath = 'dataBaseInitCP.txt';
+const configFilePath = 'databasesInit.txt';
 
 // Créer ou ouvrir la base de données SQLite3
-const db = new sqlite3.Database('./DataBase/database.db', (err) => {
+const db = new sqlite3.Database('./DataBase/database.sqlite', (err) => {
     if (err) {
         console.error('Erreur lors de l\'ouverture de la base de données :', err.message);
     } else {
@@ -28,6 +44,7 @@ fs.readFile(configFilePath, 'utf-8', (err, sql) => {
             console.error('Erreur lors de l\'exécution des commandes SQL :', err.message);
         } else {
             console.log('Commandes SQL exécutées avec succès.');
+            hashAndStorePasswords();
         }
 
         // Fermer la base de données
@@ -40,3 +57,22 @@ fs.readFile(configFilePath, 'utf-8', (err, sql) => {
         });
     });
 });
+
+function hashAndStorePasswords() {
+    db.all('SELECT MotDePasse, Email FROM Users', (err, rows) => {
+        if (err) {
+            console.log("Erreur lors de la récupération des mots de passe : ", err.message);
+        } else {
+            console.log("Récupération des mots de passe réussie.");
+        }
+
+        rows.forEach((row) => {
+            const hashedPassword = hashPassword(row.MotDePasse);
+            db.run('UPDATE Users SET MotDePasse = ? WHERE Email = ?', [hashedPassword, row.Email], (err) => {
+                if (err) {
+                    console.log("Erreur lors de la récupération des mots de passe : ", err.message);
+                }
+            });
+        });
+    });
+}
