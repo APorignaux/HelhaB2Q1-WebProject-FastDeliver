@@ -9,7 +9,7 @@ header {
   justify-content: space-between;
   background-color: white;
   color: black;
-  font-size: 10px;
+  align-items: center;
 }
 header button {
   background-color: #0c72bc;
