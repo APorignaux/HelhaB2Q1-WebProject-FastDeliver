@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Édition du colis</title>
-    <link rel="stylesheet" href="../Styles/edit.css">
     <link rel="stylesheet" href="../Styles/common.css">
+    <link rel="stylesheet" href="../Styles/edit-delivery.css">
 </head>
 <body>
  <header>
          <h1>FastDeliver</h1>
          <button>Connexion</button>
  </header>
-<main class="div">
+<main class="container">
     <h1>Édition du colis Colis [code]</h1>
-    <div id="actions">
+    <div id="container-actions">
         <button class="annuler">Annuler</button>
         <button class="enregistrer">Enregistrer</button>
     </div>
-    <div id="grid">
+    <div id="container-grid">
         <div id="informations-colis" class="column">
             <h1>Informations du colis</h1>
             <form>
@@ -55,14 +55,14 @@
                 <textarea id="address"></textarea>
             </form>
         </div>
-        <div id="delivery-driver" class="column">
+        <div id="livreur-assigné" class="column">
             <h1>Livreur assigné</h1>
             <form>
-                <label for="delivery-driver-name">Nom du livreur</label>
-                <input type="text" id="delivery-driver-name">
+                <label for="livreur-nom">Nom du livreur</label>
+                <input type="text" id="livreur-nom">
 
-                <label for="delivery-driver-notes">Notes livreur</label>
-                <textarea id="delivery-driver-notes"></textarea>
+                <label for="livreur-notes">Notes livreur</label>
+                <textarea id="livreur-notes"></textarea>
             </form>
         </div>
     </div>
