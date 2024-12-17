@@ -30,6 +30,7 @@ NumSuivis VARCHAR(20) NOT NULL CONSTRAINT NumSuivisPK PRIMARY KEY,
 Date VARCHAR(10) NOT NULL,
 ClientEmail VARCHAR(30),
 Addresse VARCHAR(50) NOT NULL,
+Poids VARCHAR(10) NOT NULL,
 Status VARCHAR(20) NOT NULL,
 Livreur VARCHAR(20) NOT NULL,
 CONSTRAINT ClientFK FOREIGN KEY (ClientEmail)
@@ -38,12 +39,12 @@ CONSTRAINT LivreurFK FOREIGN KEY (Livreur)
     REFERENCES Users (Email)
 );
 
-INSERT INTO Livraisons (NumSuivis, Date, ClientEmail, Addresse, Status, Livreur) VALUES
-('FD28465937BE', '2024-12-01', 'client1@example.com', '123 Rue de Paris, 75001 Paris', 'En cours', 'admin@fastdeliver.com'),
-('FD34871902BE', '2024-12-02', 'client2@example.com', '45 Avenue des Champs, 75008 Paris', 'Livré', 'emma@fastdeliver.com'),
-('FD76458219BE', '2024-12-03', 'client3@example.com', '78 Boulevard Haussmann, 75009 Paris', 'En préparation', 'marc@fastdeliver.com'),
-('FD92103487BE', '2024-12-04', 'client4@example.com', '12 Rue de Lyon, 69003 Lyon', 'Annulé', 'lucas@fastdeliver.com'),
-('FD63578241BE', '2024-12-05', 'client5@example.com', '56 Place Bellecour, 69002 Lyon', 'En cours', 'emma@fastdeliver.com');
+INSERT INTO Livraisons (NumSuivis, Date, ClientEmail, Addresse, Poids, Status, Livreur) VALUES
+('FD28465937BE', '2024-12-01', 'client1@example.com', '123 Rue de Paris, 75001 Paris', '3.125 kg', 'En cours', 'admin@fastdeliver.com'),
+('FD34871902BE', '2024-12-02', 'client2@example.com', '45 Avenue des Champs, 75008 Paris', '5.625 kg', 'Livré', 'emma@fastdeliver.com'),
+('FD76458219BE', '2024-12-03', 'client3@example.com', '78 Boulevard Haussmann, 75009 Paris', '2 kg', 'En préparation', 'marc@fastdeliver.com'),
+('FD92103487BE', '2024-12-04', 'client4@example.com', '12 Rue de Lyon, 69003 Lyon', '0.250 kg', 'Annulé', 'lucas@fastdeliver.com'),
+('FD63578241BE', '2024-12-05', 'client5@example.com', '56 Place Bellecour, 69002 Lyon', '10.275 kg', 'En cours', 'emma@fastdeliver.com');
 
 
 

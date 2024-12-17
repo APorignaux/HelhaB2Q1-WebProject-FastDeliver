@@ -13,11 +13,6 @@ fs.unlink('./DataBase/database.sqlite', (err) => {
     }
 });
 
-function hashPassword(password) {
-    return bcrypt.hashSync(password, 10);
-}
-
-
 // Nom du fichier de configuration SQL
 const configFilePath = 'databasesInit.txt';
 
@@ -59,7 +54,7 @@ fs.readFile(configFilePath, 'utf-8', (err, sql) => {
 });
 
 function hashAndStorePasswords() {
-    db.all('SELECT MotDePasse, Email FROM Users', (err, rows) => {
+    db.all('SELECT MotDePasse, Email FROM Users', (err, rows) => { //recupère les mots de passe dans la base de données et les mets dans rows pour qu'on puisse faire des opérations dessus
         if (err) {
             console.log("Erreur lors de la récupération des mots de passe : ", err.message);
         } else {
@@ -67,7 +62,8 @@ function hashAndStorePasswords() {
         }
 
         rows.forEach((row) => {
-            const hashedPassword = hashPassword(row.MotDePasse);
+            const hashedPassword = bcrypt.hashSync(row.MotDePasse, 10);
+
             db.run('UPDATE Users SET MotDePasse = ? WHERE Email = ?', [hashedPassword, row.Email], (err) => {
                 if (err) {
                     console.log("Erreur lors de la récupération des mots de passe : ", err.message);
