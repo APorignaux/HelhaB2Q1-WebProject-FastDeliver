@@ -1,0 +1,203 @@
+.suivi_de_colis {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  background: rgb(128, 194, 254);
+  background: linear-gradient(93deg, rgba(128, 194, 254, 1) 20%, rgba(18, 148, 231, 1) 65%);
+  padding-bottom: 15%;
+  padding-top: 10%;
+
+  h1 {
+    font-size: 50px;
+    width: 90%;
+    margin: 0 5% 5%;
+    text-align: center;
+    color: white;
+  }
+
+  p {
+    font-size: 35px;
+    color: white;
+    text-align: center;
+    margin-bottom: 5%;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    margin-left: 10%;
+    margin-right: 10%;
+    align-items: center;
+    height: 40%;
+
+    input {
+      width: 100%;
+      font-size: 30px;
+      margin-bottom: 2.5%;
+      min-height: 100px;
+      border-radius: 10px;
+      padding-left: 10px;
+      border-style: none;
+      box-sizing: border-box; // Ensure padding does not increase the size
+    }
+
+    button {
+      width: 100%;
+      min-height: 100px;
+      font-size: 30px;
+      background-color: #00c09f;
+      color: white;
+      border: none;
+      margin-bottom: 5%;
+      border-radius: 10px;
+    }
+  }
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+  background: #f6f7fa;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  width: 100%;
+
+  > div {
+    margin-top: 4%;
+    margin-bottom: 4%;
+    background: white;
+    width: 90%;
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    > * {
+      margin: 1%;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 35px;
+    }
+
+    p {
+      font-size: 30px;
+      color: #a8abaa;
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+//-------------------------LAPTOP-------------------------
+@media screen and (min-width: 1000px) {
+  main {
+    width: 100vw;
+  }
+
+  .suivi_de_colis {
+    padding: 2% 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+
+    form {
+      flex-direction: row;
+      justify-content: center;
+      display: flex;
+      font-size: 2em;
+
+      input {
+        width: 275px;
+        min-height: 50px;
+        padding: 10px;
+        margin: 0;
+        font-size: 15px;
+        border: none;
+        border-radius: 3px;
+      }
+
+      button {
+        color: white;
+        background-color: #01c09d;
+        border: none;
+        border-radius: 3px;
+        font-size: 10px;
+        width: 100px;
+        min-height: 50px;
+        margin-left: 1vw;
+        margin-bottom: 0;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    h1 {
+      font-size: 4.2vw;
+    }
+
+    p {
+      font-size: 2vw;
+    }
+
+    > h1, > p {
+      color: white;
+      margin-bottom: 1.5%;
+    }
+  }
+
+  .infos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background: #f6f7fa;
+    width: 100%;
+    justify-content: center;
+
+    > div {
+      background: white;
+      width: 40%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      margin: 10px 45px;
+
+      > * {
+        margin: 1%;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      p {
+        font-size: 15px;
+        color: #a8abaa;
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}

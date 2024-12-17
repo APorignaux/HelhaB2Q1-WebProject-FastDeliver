@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>FastDeliver - Livraison rapide de colis</title>
-    <link rel="stylesheet" href="../Styles/Pages/index.css">
+    <link rel="stylesheet" href="../Styles/index.css">
     <link rel="stylesheet" href="../Styles/common.css">
 </head>
 <body>
@@ -12,31 +12,34 @@
         <button>Connexion</button>
     </header>
     <main>
-        <div id="suivi_de_colis">
-            <h1>Livraison rapide et sécurisée de vos colis</h1>
-            <p>Service de livraison 24/7 partout en Belgique</p>
-            <form>
-                <input type="text" name="tracking_number" placeholder="Entrez votre numéro de suivi">
-                <button type="submit">Suivre mon colis</button>
-            </form>
-        </div>
-        <div id="infos">
-            <div id="DivLivraison">
-                <img src="../Images/cartoonBoxImage.png" alt="colis">
-                <h2>Livraison Rapide</h2>
-                <p>Livraison gartanie en 24-48h</p>
+        <section>
+            <div class="suivi_de_colis">
+                <h1>Livraison rapide et sécurisée de vos colis</h1>
+                <p>Service de livraison 24/7 partout en Belgique</p>
+                <form>
+                    <input type="text" name="tracking_number" placeholder="Entrez votre numéro de suivi">
+                    <button type="submit">Suivre mon colis</button>
+                </form>
             </div>
-            <div id="DivSecurite">
-                <img src="../Images/lockImage.jpeg" alt="cadenas">
-                <h2>Sécurisé</h2>
-                <p>Suivi en temps réel de vos colis</p>
+            <div class="infos">
+                <div class="DivLivraison">
+                    <img src="../Images/cartoonBoxImage.png" alt="colis">
+                    <h2>Livraison Rapide</h2>
+                    <p>Livraison gartanie en 24-48h</p>
+                </div>
+                <div class="DivSecurite">
+                    <img src="../Images/lockImage.jpeg" alt="cadenas">
+                    <h2>Sécurisé</h2>
+                    <p>Suivi en temps réel de vos colis</p>
+                </div>
+                <div class="DivPrix">
+                    <img src="../Images/bagOfCoinImage.png" alt="sac de pièces">
+                    <h2>Prix Compétitifs</h2>
+                    <p>Tarifs adaptés à vos besoins</p>
+                </div>
             </div>
-            <div id="DivPrix">
-                <img src="../Images/bagOfCoinImage.png" alt="sac de pièces">
-                <h2>Prix Compétitifs</h2>
-                <p>Tarifs adaptés à vos besoins</p>
-            </div>
-        </div>
+        </section>
+
     </main>
     <footer>
         <p>&copy; 2024 FastDeliver - Tous droits réservés</p>
