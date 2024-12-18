@@ -24,7 +24,7 @@ body main {
   align-items: center;
   justify-content: center;
 }
-body main #formulaire {
+body main .formulaire {
   background-color: #fff;
   padding: 30px 40px;
   border-radius: 8px;
@@ -32,20 +32,20 @@ body main #formulaire {
   width: 100%;
   max-width: 400px;
 }
-body main #formulaire h2 {
+body main .formulaire h2 {
   text-align: center;
   margin-bottom: 20px;
   color: #333;
   font-size: 1.5rem;
   font-weight: bold;
 }
-body main #formulaire label {
+body main .formulaire label {
   display: block;
   margin-bottom: 8px;
   color: #007bff;
   font-size: 0.9rem;
 }
-body main #formulaire input {
+body main .formulaire input {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
@@ -53,11 +53,11 @@ body main #formulaire input {
   border-radius: 4px;
   font-size: 1rem;
 }
-body main #formulaire input:focus {
+body main .formulaire input:focus {
   border-color: #007bff;
   outline: none;
 }
-body main #formulaire button {
+body main .formulaire button {
   width: 100%;
   padding: 10px;
   background-color: #007bff;
@@ -67,7 +67,7 @@ body main #formulaire button {
   font-size: 1rem;
   cursor: pointer;
 }
-body main #formulaire button:hover {
+body main .formulaire button:hover {
   background-color: rgb(0, 98.4, 204);
 }
 
