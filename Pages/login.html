@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion - FastDeliver</title>
-    <link rel="stylesheet" href="../Styles/Pages/login.css">
+    <link rel="stylesheet" href="../Styles/login.css">
     <link rel="stylesheet" href="../Styles/common.scss">
 </head>
 <body>
@@ -17,19 +17,11 @@
         <form action="">
             <div class="dropdown">
             <label for="login">Login:</label>
-            <input type="email" id="login" name="login" placeholder="admin@fastdeliver.com" required>
-                <div class="dropdown-content">
-                    <p onclick="fillForm('admin@fastdeliver.com', '********')">admin@fastdeliver.com<br>********</p>
-                    <p onclick="fillForm('admin@admin.com', '********')">admin@admin.com<br>********</p>
-                </div>
+            <input type="email" id="login" name="login" placeholder="example@fastdeliver.com" required>
             </div>
             <div class="dropdown">
             <label for="password">Mot de passe</label>
-            <input type="password" id="password" name="password" placeholder="********" required>
-                <div class="dropdown-content">
-                    <p onclick="fillForm('admin@fastdeliver.com', '********')">admin@fastdeliver.com<br>********</p>
-                    <p onclick="fillForm('admin@admin.com', '********')">admin@admin.com<br>********</p>
-                </div>
+            <input type="password" id="password" name="password" placeholder="password" required>
             </div>
             <button type="submit">Se connecter</button>
         </form>
