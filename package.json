@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "init": "node dataBaseInit.js",
+    "init": "node Scripts/dataBaseInit.js",
     "build-css": "sass Styles",
     "build-all-css": ""
   },
