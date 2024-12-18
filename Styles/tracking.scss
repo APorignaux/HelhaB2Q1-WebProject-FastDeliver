@@ -1,13 +1,9 @@
-@use "../node_modules/progress-tracker/src/styles/progress-tracker";
-@use "variables";
-@use "mixins";
-
-
 .body {
-  .container {
+  .div {
     max-width: 800px;
     max-height: fit-content;
     padding: $spacing;
+
 
 
     .container-details {
@@ -19,6 +15,10 @@
       }
     }
 
+    .container-tracking {
+
+
+    }
     .container-adresse {
       display: flex;
       background-color: $color-grey;

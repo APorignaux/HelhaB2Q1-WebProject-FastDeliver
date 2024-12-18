@@ -1,11 +1,9 @@
 /* Error: Undefined variable.
- *    ,
- * 16 |     min-width: $marker-size; // For a flexbox bug in firefox that wont allow the text overflow on the text
- *    |                ^^^^^^^^^^^^
- *    '
- *   node_modules/progress-tracker/src/styles/progress-tracker/_progress-tracker.scss 16:16  @use
- *   node_modules/progress-tracker/src/styles/progress-tracker.scss 3:1                      @use
- *   Styles/tracking.scss 1:1                                                                root stylesheet */
+ *   ,
+ * 5 |     padding: $spacing;
+ *   |              ^^^^^^^^
+ *   '
+ *   Styles\tracking.scss 5:14  root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -15,5 +13,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: Undefined variable.\a    \2577 \a 16 \2502      min-width: $marker-size; // For a flexbox bug in firefox that wont allow the text overflow on the text\a    \2502                 ^^^^^^^^^^^^\a    \2575 \a   node_modules/progress-tracker/src/styles/progress-tracker/_progress-tracker.scss 16:16  @use\a   node_modules/progress-tracker/src/styles/progress-tracker.scss 3:1                      @use\a   Styles/tracking.scss 1:1                                                                root stylesheet";
+  content: "Error: Undefined variable.\a   \2577 \a 5 \2502      padding: $spacing;\d\a   \2502               ^^^^^^^^\a   \2575 \a   Styles\\tracking.scss 5:14  root stylesheet";
 }
