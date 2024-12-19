@@ -2,12 +2,12 @@
   "name": "fastdeliver_project",
   "version": "1.0.0",
   "description": "Final project B2Q1",
-  "main": "index.js",
+  "main": "Scripts/Server.js",
   "type": "module",
   "scripts": {
-    "init": "node Scripts/dataBaseInit.js",
+    "init-db": "node Scripts/dataBaseInit.js",
     "build-css": "sass Styles",
-    "build-all-css": ""
+    "lauch-server": "nodemon Server.js"
   },
   "repository": {
     "type": "git",
