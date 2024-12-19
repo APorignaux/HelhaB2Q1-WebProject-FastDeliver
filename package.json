@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "init-db": "node Scripts/dataBaseInit.js",
-    "build-css": "sass Styles",
+    "build-css": "sass Source/Styles",
     "lauch-server": "nodemon Server.js"
   },
   "repository": {
