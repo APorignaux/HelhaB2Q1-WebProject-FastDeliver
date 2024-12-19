@@ -20,12 +20,17 @@ app.post('/login', (req, res) => {
         if (err) {
             console.error('Error querying database:', err.message);
             res.status(500).send('Internal server error');
-        } else if (!row) {
+        } else if (!row) { /*pas d'utilisateur avec cet email*/
             res.status(401).send('Invalid email or password');
         } else {
             const passwordMatch = bcrypt.compareSync(password, row.MotDePasse);
             if (passwordMatch) {
-                res.send('Access granted');
+                if (row.Role === 'Administrateur') /*triple égal signifie stricte égalité*/ {
+                    res.send('Access granted');
+                    res.json({ redirect: 'admin.html' });
+                } else {
+                    res.send('Access granted');
+                }
             } else {
                 res.status(401).send('Invalid email or password');
             }
@@ -36,3 +41,4 @@ app.post('/login', (req, res) => {
 app.listen(3001, () => {
     console.log('Server is listening on port 3001');
 });
+
