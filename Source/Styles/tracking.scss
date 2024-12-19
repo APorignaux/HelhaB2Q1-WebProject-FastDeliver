@@ -1,3 +1,6 @@
+@use "variables" as *;
+@use "mixins" as *;
+
 .body {
   .div {
     max-width: 800px;

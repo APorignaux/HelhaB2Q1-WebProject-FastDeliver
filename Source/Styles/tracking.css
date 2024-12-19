@@ -1,17 +1,16 @@
-/* Error: Undefined variable.
- *   ,
- * 5 |     padding: $spacing;
- *   |              ^^^^^^^^
- *   '
- *   Styles/tracking.scss 5:14  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Undefined variable.\a   \2577 \a 5 \2502      padding: $spacing;\a   \2502               ^^^^^^^^\a   \2575 \a   Styles/tracking.scss 5:14  root stylesheet";
+.body .div {
+  max-width: 800px;
+  max-height: fit-content;
+  padding: 1rem;
 }
+.body .div .container-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.body .div .container-adresse {
+  display: flex;
+  background-color: #f9f9fb;
+  width: 100%;
+}
+
+/*# sourceMappingURL=tracking.css.map */
