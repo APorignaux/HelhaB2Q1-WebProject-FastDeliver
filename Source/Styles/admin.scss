@@ -1,11 +1,5 @@
-// Variables
-$primary-color: #0c72bc;
-$secondary-color: color(srgb 0.9177 0.3413 0.2683);
-$background-color: color(srgb 0.93 0.95 0.98);
-$font-size-large: 12px;
-$border-radius: 5px;
-$padding: 20px;
-$distanceBetweenButtons: 10px;
+@use "variables" as *;
+@use "mixins" as *;
 
 // Mixin for button styles
 @mixin button-styles($bg-color) {
@@ -22,7 +16,7 @@ $distanceBetweenButtons: 10px;
 
 // Styles
 body {
-  background-color: $background-color;
+  background-color: $admin-background-color;
   margin: 0 auto;
   width: 100%;
 }
@@ -51,7 +45,7 @@ header {
   }
 
   button.logoutButton {
-    background-color: $secondary-color;
+    background-color: $admin-secondary-color;
     width: 110px;
   }
 }

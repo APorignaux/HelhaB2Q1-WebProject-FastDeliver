@@ -1,12 +1,6 @@
 @use "sass:color";
-
-// Variables
-$background-color: #f5f5f5;
-$form-background: #fff;
-$border-color: #ddd;
-$footer-background: #333;
-$text-color: #333;
-$secondary-text-color: #555;
+@use "variables" as *;
+@use "mixins" as *;
 
 // Styles
 * {
@@ -17,7 +11,7 @@ $secondary-text-color: #555;
 
 body {
   font-family: Arial, sans-serif;
-  background-color: $background-color;
+  background-color: $login-background-color;
   display: flex;
   flex-direction: column;
   min-height: 100vh;

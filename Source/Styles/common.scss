@@ -1,14 +1,5 @@
-// Variables
-$primary-color: #0c72bc;
-$secondary-color: #282e30;
-$font-family: "simplified arabic", sans-serif;
-$header-font-size: 10px;
-$button-font-size: 12px;
-$button-width: 100px;
-$button-radius: 5px;
-$footer-color: lightgrey;
-$footer-padding: 1em 6em;
-$media-min-width: 800px;
+@use "variables" as *;
+@use "mixins" as *;
 
 // Global styles
 * {
