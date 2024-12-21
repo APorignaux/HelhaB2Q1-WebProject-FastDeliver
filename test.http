@@ -1,4 +1,5 @@
 ### GET Livraisons
 GET http://localhost:3010/Livraisons
 
-###
+###DELETE Livraisons
+DELETE http://localhost:3010/Livraisons/FD28465937BE

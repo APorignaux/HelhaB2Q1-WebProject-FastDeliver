@@ -29,6 +29,20 @@ app.get('/Livraisons', (req, res) => {
     });
 });
 
+app.delete('/Livraisons/:id', (req, res) => {
+    const deliveryId = req.params.id;
+    db.run('DELETE FROM Livraisons WHERE NumSuivis = ?', [deliveryId], function (err) {
+        if (err) {
+        console.error(err.message);
+        res.status(500).json({ error: 'Internal server error' });
+        } else if (this.changes === 0) {
+        res.status(404).json({ error: 'Delivery not found' });
+        } else {
+        res.json({ message: 'Delivery deleted successfully' });
+        }
+    });
+});
+
 app.listen(port, () => {
   console.log('Server is running on port 3010');
 });

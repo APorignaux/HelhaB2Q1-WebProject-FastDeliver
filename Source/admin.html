@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="Styles/common.css">
     <link rel="stylesheet" href="Styles/admin.css">
     <script src="./adminFiller.js" defer></script>
+    <script src="./modifyDB.js" defer></script>
 </head>
 <body>
     <header>
@@ -49,6 +50,7 @@
                     <th scope="col">Date</th>
                     <th scope="col">Client</th>
                     <th scope="col">Adresse</th>
+                    <th scope="col">Poids</th>
                     <th scope="col">Status</th>
                     <th scope="col">Livreur</th>
                     <th scope="col">Actions</th>
@@ -78,8 +80,8 @@
                         <td class="status" id="delivery-status">[Statut]</td>
                         <td class="delivery-person" id="delivery-person">[Livreur]</td>
                         <td><div>
-                            <button class="editButton">Modifier</button>
-                            <button class="deleteButton">Supprimer</button>
+                            <img src="./Images/pencil.png" alt="modify_button" class="editButton" onclick="">
+                            <img src="./Images/bin.png" alt="delete_button" class="deleteButton" onclick="deletedelivery(this.closest('tr').querySelector('.tracking-number'))">
                         </div></td>
                     </tr>
                 </template>

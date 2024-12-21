@@ -93,6 +93,12 @@ table {
   letter-spacing: 1px;
   border-spacing: 0;
 }
+table thead,
+table tbody {
+  display: table-row-group;
+  width: 100%;
+  text-align: center;
+}
 table caption {
   caption-side: bottom;
   padding: 10px;
@@ -104,6 +110,14 @@ table tfoot {
 }
 table tr {
   border-bottom: 1px solid color(srgb 0.8962 0.9062 0.9018);
+}
+table tr .editButton {
+  width: 25px;
+  height: 25px;
+}
+table tr .deleteButton {
+  width: 25px;
+  height: 25px;
 }
 table th,
 table td {
