@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>FastDeliver</title>
+    <title>Driver-next - FastDeliver</title>
     <link rel="stylesheet" href="Styles/common.css">
     <link rel="stylesheet" href="Styles/driver-next.css">
 </head>
 <body>
-    <header>
+    <header class="driver-nextHeader">
         <div class="headerBlockOne">
             <h1>FastDeliver</h1>
             <button class="adminButton">Livreur</button>
@@ -18,10 +18,70 @@
         </div>
     </header>
     <main>
-
+        <div class="noDeliveriesDiv hidden" id="NoDeliveriesDiv">
+            <img src="./Images/no-more-delivery.jpg" alt="liste complétée">
+            <p>Aucune livraison prévue</p>
+        </div>
+        <div class="currentDeliveryDiv" id="currentDeliveryDiv">
+            <div class="currentDeliveryHeader">
+                <div class="current-deliver-infos">
+                    <h2>Prochaine livraison</h2>
+                    <p>Colis FD28465937BE</p>
+                </div>
+                <div class="current-deliver-action">
+                    <button class="current-deliver-issue-button">Problème</button>
+                    <button class="current-deliver-mark-as-delivered-button" type="submit">Marqué comme livré</button>
+                </div>
+            </div>
+            <hr>
+            <div class="delivery-core-info">
+                <h3>Destinataire</h3>
+                <br>
+                <div class="-delivery-info-bloc">
+                    <p>Nom</p>
+                    <p>[Nom]</p>
+                </div>
+                <br>
+                <div class="-delivery-info-bloc">
+                    <p>Telephone</p>
+                    <p>[Telephone]</p>
+                </div>
+                <br>
+                <div class="-delivery-info-bloc">
+                    <p>Adresse</p>
+                    <p>[Adresse]</p>
+                </div>
+                <br>
+                <div class="-delivery-info-bloc">
+                    <p>Instructions</p>
+                    <div class="instruction-block">
+                        <p>[Instructions]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="nextDeliveryDiv" id="nextDeliveryDiv">
+            <div class="next-deliver-infos">
+                <h2>Prochaines livraisons</h2>
+            </div>
+            <br>
+            <hr>
+            <div class="delivery-core-info">
+                <div class="-delivery-info-bloc">
+                    <p>[NumSuivis]</p>
+                    <p>[Addresse]</p>
+                </div>
+                <br>
+                <div class="-delivery-info-bloc">
+                    <p>[NumSuivis]</p>
+                    <p>[Addresse]</p>
+                </div>
+            </div>
+        </div>
     </main>
     <footer>
-
+        <p>&copy; 2024 FastDeliver - Tous droits réservés</p>
     </footer>
 
 </body>

@@ -1,5 +1,189 @@
 body {
-  background-color: blue;
+  background-color: color(display-p3 0.9647 0.9686 0.9804);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+body .hidden {
+  display: none !important;
+}
+body header {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+body header .headerBlockOne button {
+  background-color: color(display-p3 0.3412 0.749 0.6314);
+}
+body header .headerBlockTwo {
+  margin-bottom: 10px;
+}
+body header .headerBlockTwo p {
+  color: color(display-p3 0.5176 0.5294 0.5373);
+}
+body header .headerBlockTwo button {
+  background-color: color(display-p3 0.8549 0.3804 0.302);
+  padding: 10px;
+}
+body main {
+  flex: 1;
+}
+body main .noDeliveriesDiv {
+  margin: 30px 20px 30px;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body main .noDeliveriesDiv img {
+  width: 60%;
+}
+body main .noDeliveriesDiv p {
+  color: color(display-p3 0.5176 0.5294 0.5373);
+}
+body main .nextDeliveryDiv {
+  margin-top: 20px;
+}
+body main .currentDeliveryDiv,
+body main .nextDeliveryDiv {
+  margin: 30px 20px 30px;
+  border-radius: 10px;
+  background-color: white;
+  padding-bottom: 15px;
+}
+body main .currentDeliveryDiv .next-deliver-infos > *,
+body main .nextDeliveryDiv .next-deliver-infos > * {
+  padding-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+body main .currentDeliveryDiv .currentDeliveryHeader,
+body main .currentDeliveryDiv .nextDeliveryDiv,
+body main .nextDeliveryDiv .currentDeliveryHeader,
+body main .nextDeliveryDiv .nextDeliveryDiv {
+  display: flex;
+  flex-direction: column;
+}
+body main .currentDeliveryDiv .currentDeliveryHeader .current-deliver-infos > *, body main .currentDeliveryDiv .currentDeliveryHeader .next-deliver-infos > *,
+body main .currentDeliveryDiv .nextDeliveryDiv .current-deliver-infos > *,
+body main .currentDeliveryDiv .nextDeliveryDiv .next-deliver-infos > *,
+body main .nextDeliveryDiv .currentDeliveryHeader .current-deliver-infos > *,
+body main .nextDeliveryDiv .currentDeliveryHeader .next-deliver-infos > *,
+body main .nextDeliveryDiv .nextDeliveryDiv .current-deliver-infos > *,
+body main .nextDeliveryDiv .nextDeliveryDiv .next-deliver-infos > * {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+body main .currentDeliveryDiv .currentDeliveryHeader p,
+body main .currentDeliveryDiv .nextDeliveryDiv p,
+body main .nextDeliveryDiv .currentDeliveryHeader p,
+body main .nextDeliveryDiv .nextDeliveryDiv p {
+  color: color(display-p3 0.5176 0.5294 0.5373);
+}
+body main .currentDeliveryDiv .current-deliver-action,
+body main .nextDeliveryDiv .current-deliver-action {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+body main .currentDeliveryDiv .current-deliver-action .current-deliver-issue-button,
+body main .nextDeliveryDiv .current-deliver-action .current-deliver-issue-button {
+  width: 45%;
+  background-color: color(srgb 0.949 0.949 0.9491);
+  color: red;
+  padding: 10px;
+  border: none;
+  border-radius: 2px;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+body main .currentDeliveryDiv .current-deliver-action .current-deliver-mark-as-delivered-button,
+body main .nextDeliveryDiv .current-deliver-action .current-deliver-mark-as-delivered-button {
+  width: 45%;
+  background-color: color(srgb 0.0717 0.7324 0.731);
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 2px;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+body main .currentDeliveryDiv .delivery-core-info,
+body main .nextDeliveryDiv .delivery-core-info {
+  background-color: color(srgb 0.949 0.949 0.9491);
+  margin-top: 30px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 5px;
+  padding-left: 15px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+body main .currentDeliveryDiv .delivery-core-info h3,
+body main .nextDeliveryDiv .delivery-core-info h3 {
+  color: black;
+}
+body main .currentDeliveryDiv .delivery-core-info *,
+body main .nextDeliveryDiv .delivery-core-info * {
+  color: gray;
+}
+
+@media screen and (min-width: 800px) {
+  body header.driver-nextHeader {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  body header.driver-nextHeader div.headerBlockTwo,
+  body header.driver-nextHeader div.headerBlockOne {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    align-items: center;
+    text-align: center;
+  }
+  body header.driver-nextHeader div.headerBlockTwo h1,
+  body header.driver-nextHeader div.headerBlockOne h1 {
+    padding: 0;
+    margin: 0;
+  }
+  body header.driver-nextHeader div.headerBlockTwo button,
+  body header.driver-nextHeader div.headerBlockOne button {
+    margin-left: 10px;
+    margin-right: 0;
+    padding: 0;
+  }
+  body header.driver-nextHeader div.headerBlockTwo {
+    margin-right: 5vw;
+  }
+  body header.driver-nextHeader div.headerBlockOne {
+    margin-left: 5vw;
+  }
+  body main div.currentDeliveryHeader {
+    display: flex;
+    flex-direction: row !important;
+  }
+  body main div.currentDeliveryHeader div.current-deliver-action {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+  }
+  body main div.currentDeliveryHeader div.current-deliver-action button.current-deliver-issue-button, body main div.currentDeliveryHeader div.current-deliver-action button.current-deliver-mark-as-delivered-button {
+    width: auto;
+    height: 40px;
+    border-radius: 5px;
+  }
+  body main div.currentDeliveryHeader div.current-deliver-action button.current-deliver-mark-as-delivered-button {
+    margin-right: 40px;
+  }
 }
 
 /*# sourceMappingURL=driver-next.css.map */

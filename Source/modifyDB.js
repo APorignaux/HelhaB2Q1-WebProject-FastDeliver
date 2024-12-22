@@ -1,12 +1,13 @@
 
 
-async function deletedelivery(element) {
+
+
+async function deleteDelivery(element) {
     const deliveryId = element.innerText;
     try {
         const response = await fetch('/Livraisons/' + deliveryId, {
             method: 'DELETE',
         });
-
         const data = await response.json();
 
         if (response.ok) {
@@ -16,7 +17,12 @@ async function deletedelivery(element) {
             alert(data.error || "Une erreur inconnue est survenue");
         }
     } catch (error) {
-        console.error("Erreur réseau :", error);
-        alert("Erreur réseau. Impossible de supprimer la livraison.");
+        console.error("Erreur :", error);
+        alert("Erreur. Impossible de supprimer la livraison.");
     }
+}
+
+async function modifyDelivery(element) {
+    const deliveryId = element.innerText;
+    window.location.href = '/modifyDelivery.html?id=' + deliveryId;
 }

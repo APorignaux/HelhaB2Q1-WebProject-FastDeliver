@@ -1,3 +1,204 @@
+@use "variables" as *;
+@use "mixins" as *;
+
 body {
-background-color: blue;
+  background-color: color(display-p3 0.9647 0.9686 0.9804);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  .hidden{
+    display: none !important;
+  }
+
+  header{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+      .headerBlockOne{
+
+        button{
+          background-color: color(display-p3 0.3412 0.749 0.6314);
+        }
+      }
+      .headerBlockTwo{
+        margin-bottom: 10px;
+
+        p{
+          color: color(display-p3 0.5176 0.5294 0.5373);
+        }
+
+        button{
+          background-color: color(display-p3 0.8549 0.3804 0.302);
+          padding: 10px;
+
+        }
+      }
+  }
+
+  main{
+    flex: 1;
+
+    .noDeliveriesDiv{
+      margin: 30px 20px 30px;
+      border-radius: 10px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      img{
+        width: 60%;
+      }
+
+      p{
+        color: color(display-p3 0.5176 0.5294 0.5373);
+      }
+    }
+
+    .nextDeliveryDiv{
+      margin-top:20px;
+    }
+
+    .currentDeliveryDiv,
+    .nextDeliveryDiv{
+      margin: 30px 20px 30px;
+      border-radius: 10px;
+      background-color: white;
+      padding-bottom: 15px;
+
+      .next-deliver-infos > *{
+        padding-top:10px;
+        margin-bottom: 10px;
+        margin-left: 15px;
+      }
+
+      .currentDeliveryHeader,
+      .nextDeliveryDiv{
+        display: flex;
+        flex-direction: column;
+
+        .current-deliver-infos > *, .next-deliver-infos > *{
+          margin-top:10px;
+          margin-bottom: 10px;
+          margin-left: 15px;
+        }
+
+        p{
+          color: color(display-p3 0.5176 0.5294 0.5373);
+        }
+      }
+      .current-deliver-action{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 10px;
+        .current-deliver-issue-button{
+          width:45%;
+          background-color: color(srgb 0.949 0.949 0.9491);
+          color: red;
+          padding: 10px;
+          border: none;
+          border-radius: 2px;
+          margin-left: 10px;
+          margin-right: 5px;
+        }
+        .current-deliver-mark-as-delivered-button{
+          width: 45%;
+          background-color: color(srgb 0.0717 0.7324 0.731);
+          color: white;
+          padding: 10px;
+          border: none;
+          border-radius: 2px;
+          margin-right: 10px;
+          margin-left: 5px;
+        }
+      }
+      .delivery-core-info{
+        background-color: color(srgb 0.949 0.949 0.9491);
+        margin-top: 30px;
+        margin-left: 15px;
+        margin-right: 15px;
+        border-radius: 5px;
+        padding-left: 15px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+
+        h3{
+          color: black;
+        }
+
+        *{
+          color: gray;
+        }
+
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $media-min-width) {
+  body {
+    header.driver-nextHeader{
+      flex-direction: row;
+      justify-content: space-between;
+
+
+      div.headerBlockTwo,
+      div.headerBlockOne{
+        display: flex;
+        flex-direction: row;
+        width: auto;
+        align-items: center;
+        text-align: center;
+
+        h1{
+          padding: 0;
+          margin: 0;
+        }
+
+        button{
+          margin-left: 10px;
+          margin-right: 0;
+          padding: 0;
+        }
+      }
+
+      div.headerBlockTwo{
+        margin-right: 5vw;
+      }
+      div.headerBlockOne{
+        margin-left: 5vw;
+      }
+
+    }
+    main{
+      div.currentDeliveryHeader{
+        display: flex;
+        flex-direction: row !important;
+
+        div.current-deliver-action{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: end;
+
+          button.current-deliver-issue-button, button.current-deliver-mark-as-delivered-button{
+            width: auto;
+            height: 40px;
+            border-radius: 5px;
+          }
+
+          button.current-deliver-mark-as-delivered-button{
+            margin-right: 40px;
+          }
+        }
+      }
+    }
+  }
 }
