@@ -1,10 +1,9 @@
 const currentDeliveryTemplate= document.body.querySelector('#currentDeliveryTemplate');
 const currentDeliverycore = document.body.querySelector('#current-delivery-core-info');
 const currentDeliveryDiv = document.body.querySelector('#currentDeliveryDiv');
-const packageNumber = document.body.querySelector('#packageNumber');
 
 const nextDeliveryTemplate = document.body.querySelector('#nextDeliveryTemplate');
-const nextDeliveryDiv = document.body.querySelector('#delivery-core-info');
+const nextDeliveryCore = document.body.querySelector('#next-delivery-core-info');
 
 const livreurMail = 'emma@fastdeliver.com';
 
@@ -58,5 +57,30 @@ async function fetchCurrentDelivery() {
     currentDeliverycore.appendChild(currentDeliveryRow);
 }
 
-window.onload = fetchCurrentDelivery;
+async function fetchNextDelivery() {
+    nextDeliveryCore.innerHTML = '';
+    const response = await fetch('/Livraisons');
+    const DeliveryData = await response.json();
+    const delivery = DeliveryData.results;
 
+    nextDeliveryCore.innerHTML = '';
+    for(let i = 1; i < delivery.length; i++){
+        const deliveryItem = delivery[i];
+        if(deliveryItem.Livreur === livreurMail){
+            const nextDeliveryRow = nextDeliveryTemplate.content.cloneNode(true);
+
+            const nextDeliveryTrackId = nextDeliveryRow.querySelector('.delivery-tracking-number');
+            nextDeliveryTrackId.innerHTML = deliveryItem.NumSuivis;
+
+            const nextDeliveryAddress = nextDeliveryRow.querySelector('.delivery-address');
+            nextDeliveryAddress.innerHTML = deliveryItem.Addresse;
+
+            nextDeliveryCore.appendChild(nextDeliveryRow);
+        }
+    }
+
+}
+window.onload = function() {
+    fetchCurrentDelivery();
+    fetchNextDelivery();
+};

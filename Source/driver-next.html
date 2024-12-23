@@ -27,7 +27,7 @@
             <div class="currentDeliveryHeader">
                 <div class="current-deliver-infos">
                     <h2>Prochaine livraison</h2>
-                    <p>Colis <p id="packageNumber">ici</p></p>
+                    <p class="packageNumber">Colis <a id="packageNumber">ici</a></p>
                 </div>
                 <div class="current-deliver-action">
                     <button class="current-deliver-issue-button">Problème</button>
@@ -113,13 +113,9 @@
     </template>
     <template id="nextDeliveryTemplate">
         <div class="-delivery-info-bloc">
-            <p>[NumSuivis]</p>
-            <p>[Addresse]</p>
-        </div>
-        <br>
-        <div class="-delivery-info-bloc">
-            <p>[NumSuivis]</p>
-            <p>[Addresse]</p>
+            <p class="delivery-tracking-number">[NumSuivis]</p>
+            <p class="delivery-address">[Addresse]</p>
+            <br>
         </div>
     </template>
 </body>
