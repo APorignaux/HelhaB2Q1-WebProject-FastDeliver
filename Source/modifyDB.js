@@ -1,7 +1,3 @@
-
-
-
-
 async function deleteDelivery(element) {
     const deliveryId = element.innerText;
     try {

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="Styles/common.css">
     <link rel="stylesheet" href="Styles/driver-next.css">
     <script src="./driverNextFiller.js" defer></script>
+    <script src="./driverUpdateDB.js" defer></script>
 </head>
 <body>
     <header class="driver-nextHeader">
@@ -30,8 +31,8 @@
                     <p class="packageNumber">Colis <a id="packageNumber">ici</a></p>
                 </div>
                 <div class="current-deliver-action">
-                    <button class="current-deliver-issue-button">Problème</button>
-                    <button class="current-deliver-mark-as-delivered-button" type="submit">Marqué comme livré</button>
+                    <button class="current-deliver-issue-button" id="issueButton">Problème</button>
+                    <button class="current-deliver-mark-as-delivered-button" type="submit" id="markAsDeliveredButton">Marqué comme livré</button>
                 </div>
             </div>
             <hr>
