@@ -29,6 +29,17 @@ app.get('/Livraisons', (req, res) => {
     });
 });
 
+app.get('/Client', (req, res) => {
+    db.all('SELECT * FROM Client', (err, rows) => {
+        if (err) {
+        console.error(err.message);
+        res.status(500).json({ error: 'Internal server error' });
+        } else {
+        res.json({ results: rows });
+        }
+    });
+});
+
 app.delete('/Livraisons/:id', (req, res) => {
     const deliveryId = req.params.id;
     db.run('DELETE FROM Livraisons WHERE NumSuivis = ?', [deliveryId], function (err) {
@@ -41,6 +52,20 @@ app.delete('/Livraisons/:id', (req, res) => {
         res.json({ message: 'Delivery deleted successfully' });
         }
     });
+});
+
+app.patch('/Livraisons/:id', (req, res) => {
+   const deliveryId = req.params.id;
+   db.run('UPDATE Livraisons SET Status = ? WHERE NumSuivis = ?', [req.body.Status, deliveryId], function (err) {
+         if (err) {
+         console.error(err.message);
+         res.status(500).json({ error: 'Internal server error' });
+         } else if (this.changes === 0) {
+         res.status(404).json({ error: 'Delivery not found' });
+         } else {
+         res.json({ message: 'Delivery updated successfully' });
+         }
+   });
 });
 
 app.listen(port, () => {

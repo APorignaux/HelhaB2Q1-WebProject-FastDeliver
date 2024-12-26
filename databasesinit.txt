@@ -15,15 +15,16 @@ INSERT INTO Users (Nom, Email, MotDePasse, Role) VALUES
 CREATE TABLE Client (
 Nom VARCHAR(20) NOT NULL,
 Email VARCHAR(30) NOT NULL CONSTRAINT EmailClientPK PRIMARY KEY,
+Telephone VARCHAR(20) NOT NULL,
 Addresse VARCHAR(50)
 );
 
-INSERT INTO Client (Nom, Email, Addresse) VALUES
-('Jean Dupont', 'client1@example.com', '123 Rue de Paris, 75001 Paris'),
-('Marie Curie', 'client2@example.com', '45 Avenue des Champs, 75008 Paris'),
-('Paul Durand', 'client3@example.com', '78 Boulevard Haussmann, 75009 Paris'),
-('Lucie Martin', 'client4@example.com', '12 Rue de Lyon, 69003 Lyon'),
-('Sophie Bernard', 'client5@example.com', '56 Place Bellecour, 69002 Lyon');
+INSERT INTO Client (Nom, Email, Telephone, Addresse) VALUES
+('Jean Dupont', 'client1@example.com', '0601234567', '123 Rue de Paris, 75001 Paris'),
+('Marie Curie', 'client2@example.com', '0602345678', '45 Avenue des Champs, 75008 Paris'),
+('Paul Durand', 'client3@example.com', '0603456789', '78 Boulevard Haussmann, 75009 Paris'),
+('Lucie Martin', 'client4@example.com', '0604567890', '12 Rue de Lyon, 69003 Lyon'),
+('Sophie Bernard', 'client5@example.com', '0605678901', '56 Place Bellecour, 69002 Lyon');
 
 CREATE TABLE Livraisons (
 NumSuivis VARCHAR(20) NOT NULL CONSTRAINT NumSuivisPK PRIMARY KEY,
@@ -33,18 +34,26 @@ Addresse VARCHAR(50) NOT NULL,
 Poids VARCHAR(10) NOT NULL,
 Status VARCHAR(20) NOT NULL,
 Livreur VARCHAR(20) NOT NULL,
+Instructions VARCHAR(100),
 CONSTRAINT ClientFK FOREIGN KEY (ClientEmail)
     REFERENCES Client (Email),
 CONSTRAINT LivreurFK FOREIGN KEY (Livreur)
     REFERENCES Users (Email)
 );
 
-INSERT INTO Livraisons (NumSuivis, Date, ClientEmail, Addresse, Poids, Status, Livreur) VALUES
-('FD28465937BE', '2024-12-01', 'client1@example.com', '123 Rue de Paris, 75001 Paris', '3.125 kg', 'En cours', 'emma@fastdeliver.com'),
-('FD34871902BE', '2024-12-02', 'client2@example.com', '45 Avenue des Champs, 75008 Paris', '5.625 kg', 'Livré', 'emma@fastdeliver.com'),
-('FD76458219BE', '2024-12-03', 'client3@example.com', '78 Boulevard Haussmann, 75009 Paris', '2 kg', 'En préparation', 'marc@fastdeliver.com'),
-('FD92103487BE', '2024-12-04', 'client4@example.com', '12 Rue de Lyon, 69003 Lyon', '0.250 kg', 'Annulé', 'lucas@fastdeliver.com'),
-('FD63578241BE', '2024-12-05', 'client5@example.com', '56 Place Bellecour, 69002 Lyon', '10.275 kg', 'En cours', 'emma@fastdeliver.com');
-
-
-
+INSERT INTO Livraisons (NumSuivis, Date, ClientEmail, Addresse, Poids, Status, Livreur, Instructions) VALUES
+('FD28465937BE', '2024-12-01', 'client1@example.com', '123 Rue de Paris, 75001 Paris', '3.125 kg', 'En cours', 'emma@fastdeliver.com', 'Laisser devant la porte si absent'),
+('FD34871902BE', '2024-12-02', 'client2@example.com', '45 Avenue des Champs, 75008 Paris', '5.625 kg', 'Livré', 'emma@fastdeliver.com', NULL),
+('FD76458219BE', '2024-12-03', 'client3@example.com', '78 Boulevard Haussmann, 75009 Paris', '2 kg', 'En attente', 'marc@fastdeliver.com', NULL),
+('FD92103487BE', '2024-12-04', 'client4@example.com', '12 Rue de Lyon, 69003 Lyon', '0.250 kg', 'En attente', 'lucas@fastdeliver.com', 'Attention belle mère mechante'),
+('FD63578241BE', '2024-12-05', 'client5@example.com', '56 Place Bellecour, 69002 Lyon', '10.275 kg', 'En attente', 'emma@fastdeliver.com', NULL),
+('FD45821736BE', '2024-12-06', 'client1@example.com', '123 Rue de Paris, 75001 Paris', '4.500 kg', 'En attente', 'emma@fastdeliver.com', 'Ne pas déranger entre 14h et 16h'),
+('FD98562147BE', '2024-12-07', 'client2@example.com', '45 Avenue des Champs, 75008 Paris', '3.250 kg', 'Livré', 'lucas@fastdeliver.com', NULL),
+('FD72148936BE', '2024-12-08', 'client3@example.com', '78 Boulevard Haussmann, 75009 Paris', '7.125 kg', 'En attente', 'marc@fastdeliver.com', 'Attention chien méchant'),
+('FD62347918BE', '2024-12-09', 'client4@example.com', '12 Rue de Lyon, 69003 Lyon', '1.500 kg', 'En attente', 'lucas@fastdeliver.com', NULL),
+('FD78456923BE', '2024-12-10', 'client5@example.com', '56 Place Bellecour, 69002 Lyon', '9.875 kg', 'En attente', 'emma@fastdeliver.com', 'Lieu sécurisé pour laisser le colis'),
+('FD34821979BE', '2024-12-11', 'client1@example.com', '123 Rue de Paris, 75001 Paris', '6.250 kg', 'En attente', 'emma@fastdeliver.com', NULL),
+('FD78351924BE', '2024-12-12', 'client3@example.com', '78 Boulevard Haussmann, 75009 Paris', '1.750 kg', 'En cours', 'marc@fastdeliver.com', NULL),
+('FD85962387BE', '2024-12-13', 'client4@example.com', '12 Rue de Lyon, 69003 Lyon', '2.500 kg', 'En cours', 'lucas@fastdeliver.com', 'Patienter si absent pour remise en main propre'),
+('FD49321786BE', '2024-12-14', 'client2@example.com', '45 Avenue des Champs, 75008 Paris', '8.000 kg', 'En attente', 'emma@fastdeliver.com', NULL),
+('FD36891457BE', '2024-12-15', 'client5@example.com', '56 Place Bellecour, 69002 Lyon', '12.500 kg', 'En attente', 'marc@fastdeliver.com', 'Contacter client pour programmer une nouvelle livraison');

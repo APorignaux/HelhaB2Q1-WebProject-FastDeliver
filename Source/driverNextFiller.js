@@ -22,7 +22,7 @@ async function fetchCurrentDelivery() {
 
     //chercher dans les livraisons celle qui appartient au livreur connecté et la plus recente
     Object.values(delivery).forEach(deliveryItem => {       //Object.value() fais une liste avec un JSON Output: ['John', 30, 'New York']
-        if (deliveryItem.Livreur === livreurMail && deliveryItem.Status !== 'Livré') {         //deliveryItem représente une paire clé-valeur ex,  Livreur: 'emma@fastdeliver.com'
+        if (deliveryItem.Livreur === livreurMail && deliveryItem.Status !== 'Livré' && deliveryItem.Status !== 'Problème') {         //deliveryItem représente une paire clé-valeur ex,  Livreur: 'emma@fastdeliver.com'
             driverDeliveries.push(deliveryItem);
         }
     });
