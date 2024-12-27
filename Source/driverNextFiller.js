@@ -6,7 +6,15 @@ const currentDeliveryId = document.body.querySelector('#packageNumber');
 const nextDeliveryTemplate = document.body.querySelector('#nextDeliveryTemplate');
 const nextDeliveryCore = document.body.querySelector('#next-delivery-core-info');
 
-const livreurMail = 'emma@fastdeliver.com';
+const url = new URL(window.location.href);
+const params = new URLSearchParams(url.search);
+const livreurMail = params.get('user');
+
+//const livreurMail = 'emma@fastdeliver.com';
+
+async function fetchDriver() {
+
+}
 
 async function fetchCurrentDelivery() {
     currentDeliverycore.innerHTML = '';

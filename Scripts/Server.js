@@ -2,6 +2,7 @@ import expressModule from 'express';
 import sqlite3 from "sqlite3";
 import bodyParser from 'body-parser';
 import express from "express";
+import bcrypt from "bcrypt";
 
 const port = 3010;
 const app = expressModule();
@@ -66,6 +67,33 @@ app.patch('/Livraisons/:id', (req, res) => {
          res.json({ message: 'Delivery updated successfully' });
          }
    });
+});
+
+app.post('/login', (req, res) => {
+    const { email, password } = req.body;
+
+    db.get('SELECT Email,MotDePasse,Role FROM Users WHERE Email = ?', [email], (err, row) => {
+        if (err) {
+            console.error('Error querying database:', err.message);
+            res.status(500).send('Internal server error');
+        } else if (!row) { /*pas d'utilisateur avec cet email*/
+            res.status(401).send('Invalid email or password');
+        } else {
+            const passwordMatch = bcrypt.compareSync(password, row.MotDePasse);
+            if (passwordMatch) {
+                if (row.Role === 'Administrateur') {
+                    // Authentication successful
+                    res.json({ message: 'Access granted', redirect: '/admin.html' });
+                } else if(row.Role === 'Livreur') {
+                    res.json({ message: 'Access granted', redirect: '/driver-next.html?user=' + email });
+                } else {
+                    res.status(403).send('Access denied');
+                }
+            } else {
+                res.status(401).send('Invalid email or password');
+            }
+        }
+    });
 });
 
 app.listen(port, () => {

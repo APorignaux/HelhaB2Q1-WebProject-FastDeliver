@@ -1,3 +1,12 @@
+a {
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .suivi_de_colis {
   flex-direction: column;
   justify-content: center;
