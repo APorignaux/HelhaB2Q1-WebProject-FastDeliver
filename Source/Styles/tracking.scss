@@ -1,13 +1,11 @@
 @use "variables" as *;
 @use "mixins" as *;
 
-.body {
-  .div {
+body {
+  main {
     max-width: 800px;
     max-height: fit-content;
     padding: $spacing;
-
-
 
     .container-details {
       display: grid;
@@ -19,7 +17,6 @@
     }
 
     .container-tracking {
-
 
     }
     .container-adresse {

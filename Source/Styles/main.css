@@ -66,66 +66,100 @@ footer {
     flex: 1;
   }
 }
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
+body {
+  background-color: #555555;
+}
+body header {
+  width: auto;
+  margin: 5px;
+  flex-direction: column;
+  align-items: center;
+}
+body header .headerBlockOne, body header .headerBlockTwo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body header .headerBlockOne p, body header .headerBlockTwo p {
+  font-size: 12px;
+  color: #b9b9b9;
+}
+body header button.adminButton, body header button.logoutButton {
+  margin: 10px auto;
+  padding: 5px;
+}
+body header button.logoutButton {
+  background-color: color(srgb 0.9177 0.3413 0.2683);
+  width: 110px;
+}
+body main.container {
+  min-width: 1200px;
   padding: 1rem;
   background-color: #ffffff;
   border-radius: 8px;
+  margin: 40px auto;
 }
-.container h1 {
-  font-size: 1.5rem;
+body main.container section.container-header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
   margin-bottom: 1rem;
 }
-.container .container-actions {
+body main.container section.container-header h1 {
+  font-size: 1.5rem;
+}
+body main.container section.container-header .container-actions {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
 }
-.container .container-actions button {
+body main.container section.container-header .container-actions button {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
 }
-.container .container-actions button.annuler {
+body main.container section.container-header .container-actions .annuler {
   background-color: #dc3545;
   color: white;
 }
-.container .container-actions button.enregistrer {
+body main.container section.container-header .container-actions .enregistrer {
   background-color: #0c72bc;
   color: white;
 }
-.container .container-grid {
+body main.container div.container-grid {
   display: flex;
   grid-template-columns: repeat(3, 1fr);
   justify-content: space-between;
   gap: 1rem;
+  overflow-x: scroll;
+  max-width: 100%;
 }
-.container .container-grid div {
+body main.container div.container-grid .column {
   flex: 1;
   background: #f9f9fb;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.container .container-grid div h1 {
+body main.container div.container-grid .column h1 {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
 }
-.container .container-grid div form {
+body main.container div.container-grid .column form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.container .container-grid div form label {
+body main.container div.container-grid .column form label {
   font-weight: bold;
   margin-bottom: 0.25rem;
 }
-.container .container-grid div form input,
-.container .container-grid div form select,
-.container .container-grid div form textarea {
+body main.container div.container-grid .column form input,
+body main.container div.container-grid .column form select,
+body main.container div.container-grid .column form textarea {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #ccc;

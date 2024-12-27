@@ -1,75 +1,116 @@
 @use "variables" as *;
 @use "mixins" as *;
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: $spacing;
-  background-color: $color-white;
-  border-radius: 8px;
+body{
+  background-color: #555555;
 
-  h1 {
-    font-size: 1.5rem;
-    margin-bottom: $spacing;
-  }
+  header{
+    width: auto;
+    margin: 5px;
+    flex-direction: column;
+    align-items: center;
 
-  .container-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: $spacing;
-
-    button {
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
-
-      &.annuler {
-        background-color: #dc3545;
-        color: white;
+    .headerBlockOne
+    , .headerBlockTwo{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      p{
+        font-size: 12px;
+        color: #b9b9b9;
       }
 
-      &.enregistrer {
-        background-color: $color-blue;
-        color: white;
-      }
+    }
+
+    button.adminButton, button.logoutButton {
+      margin: 10px auto;
+      padding: 5px;
+    }
+
+    button.logoutButton {
+      background-color: $admin-secondary-color;
+      width: 110px;
     }
   }
 
-  .container-grid {
-    display: flex;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: space-between;
-    gap: $spacing;
+  main.container {
+    min-width: 1200px;
+    padding: $spacing;
+    background-color: $color-white;
+    border-radius: 8px;
+    margin: 40px auto;
 
-    div {
-      flex: 1;
-      background: $color-grey;
-      padding: $spacing;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    section.container-header{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: center;
+        margin-bottom: $spacing;
 
       h1 {
-        font-size: 1.25rem;
-        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
       }
 
-      form {
-        @include column-layout;
+      .container-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: $spacing;
 
-        label {
+        button {
+          padding: 0.5rem 1rem;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
           font-weight: bold;
-          margin-bottom: 0.25rem;
+        }
+        .annuler {
+          background-color: #dc3545;
+          color: white;
         }
 
-        input,
-        select,
-        textarea {
-          width: 100%;
-          padding: 0.5rem;
-          border: 1px solid #ccc;
-          border-radius: 4px;
+        .enregistrer {
+          background-color: $color-blue;
+          color: white;
+        }
+      }
+    }
+
+    div.container-grid {
+      display: flex;
+      grid-template-columns: repeat(3, 1fr);
+      justify-content: space-between;
+      gap: $spacing;
+      overflow-x: scroll;
+      max-width: 100%;
+
+      .column {
+        flex: 1;
+        background: $color-grey;
+        padding: $spacing;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        h1 {
+          font-size: 1.25rem;
+          margin-bottom: 0.5rem;
+        }
+
+        form {
+          @include column-layout;
+
+          label {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+          }
+
+          input,
+          select,
+          textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+          }
         }
       }
     }

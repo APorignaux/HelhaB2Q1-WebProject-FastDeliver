@@ -8,66 +8,74 @@
     <link rel="stylesheet" href="Styles/edit-delivery.css">
 </head>
 <body>
- <header>
-         <h1>FastDeliver</h1>
-         <button>Connexion</button>
- </header>
-<main class="container">
-    <h1>Édition du colis Colis [code]</h1>
-    <div id="container-actions">
-        <button class="annuler">Annuler</button>
-        <button class="enregistrer">Enregistrer</button>
-    </div>
-    <div id="container-grid">
-        <div id="informations-colis" class="column">
-            <h1>Informations du colis</h1>
-            <form>
-                <label for="numéro-suivi">N° de suivi</label>
-                <input type="text" id="numéro-suivi" value="FD28465940BE" readonly>
-
-                <label for="date-expédition">Date d'expédition</label>
-                <input type="date" id="date-expédition">
-
-                <label for="poids">Poids (kg)</label>
-                <input type="number" id="poids">
-
-                <label for="statut">Statut</label>
-                <select id="statut">
-                    <option>En préparation</option>
-                    <option>Expédié</option>
-                    <option>Livré</option>
-                </select>
-            </form>
+    <header>
+        <div class="headerBlockOne">
+            <h1>FastDeliver</h1>
+            <button class="adminButton">Administration</button>
         </div>
-        <div id="informations-client" class="column">
-            <h1>Informations client</h1>
-            <form>
-                <label for="name">Nom</label>
-                <input type="text" id="name">
-
-                <label for="email">Email</label>
-                <input type="email" id="email">
-
-                <label for="phone">Téléphone</label>
-                <input type="tel" id="phone">
-
-                <label for="address">Adresse de livraison</label>
-                <textarea id="address"></textarea>
-            </form>
+        <div class="headerBlockTwo">
+            <p>Admin : jean Martin</p>
+            <button class="logoutButton">Déconnexion</button>
         </div>
-        <div id="livreur-assigné" class="column">
-            <h1>Livreur assigné</h1>
-            <form>
-                <label for="livreur-nom">Nom du livreur</label>
-                <input type="text" id="livreur-nom">
-                <label for="livreur-notes">Notes livreur</label>
-                <textarea id="livreur-notes"></textarea>
-            </form>
+    </header>
+    <main class="container">
+        <section class="container-header">
+            <h1>Édition du colis Colis [code]</h1>
+            <div class="container-actions">
+                <button class="annuler">Annuler</button>
+                <button class="enregistrer">Enregistrer</button>
+            </div>
+        </section>
+        <div class="container-grid">
+            <div id="informations-colis" class="column">
+                <h1>Informations du colis</h1>
+                <form>
+                    <label for="numéro-suivi">N° de suivi</label>
+                    <input type="text" id="numéro-suivi" value="FD28465940BE" readonly>
+
+                    <label for="date-expédition">Date d'expédition</label>
+                    <input type="date" id="date-expédition">
+
+                    <label for="poids">Poids (kg)</label>
+                    <input type="number" id="poids">
+
+                    <label for="statut">Statut</label>
+                    <select id="statut">
+                        <option>En préparation</option>
+                        <option>Expédié</option>
+                        <option>Livré</option>
+                    </select>
+                </form>
+            </div>
+            <div id="informations-client" class="column">
+                <h1>Informations client</h1>
+                <form>
+                    <label for="name">Nom</label>
+                    <input type="text" id="name">
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email">
+
+                    <label for="phone">Téléphone</label>
+                    <input type="tel" id="phone">
+
+                    <label for="address">Adresse de livraison</label>
+                    <textarea id="address"></textarea>
+                </form>
+            </div>
+            <div id="livreur-assigné" class="column">
+                <h1>Livreur assigné</h1>
+                <form>
+                    <label for="livreur-nom">Nom du livreur</label>
+                    <input type="text" id="livreur-nom">
+                    <label for="livreur-notes">Notes livreur</label>
+                    <textarea id="livreur-notes"></textarea>
+                </form>
+            </div>
         </div>
-    </div>
-</main>
- <footer>
-     <p>&copy; 2024 FastDeliver - Tous droits réservés</p>
- </footer>
+    </main>
+    <footer>
+        <p>&copy; 2024 FastDeliver - Tous droits réservés</p>
+    </footer>
 </body>
 </html>

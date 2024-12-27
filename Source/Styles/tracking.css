@@ -1,13 +1,13 @@
-.body .div {
+body main {
   max-width: 800px;
   max-height: fit-content;
   padding: 1rem;
 }
-.body .div .container-details {
+body main .container-details {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
-.body .div .container-adresse {
+body main .container-adresse {
   display: flex;
   background-color: #f9f9fb;
   width: 100%;
