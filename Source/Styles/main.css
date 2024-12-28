@@ -67,7 +67,7 @@ footer {
   }
 }
 body {
-  background-color: #555555;
+  background-color: #f9f9fb;
 }
 body header {
   width: auto;
@@ -79,13 +79,17 @@ body header .headerBlockOne, body header .headerBlockTwo {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-right: 5vw;
 }
 body header .headerBlockOne p, body header .headerBlockTwo p {
   font-size: 12px;
   color: #b9b9b9;
 }
+body header .headerBlockOne h1, body header .headerBlockTwo h1 {
+  padding: 0;
+}
 body header button.adminButton, body header button.logoutButton {
-  margin: 10px auto;
+  margin: 10px 0.5em;
   padding: 5px;
 }
 body header button.logoutButton {
@@ -93,39 +97,40 @@ body header button.logoutButton {
   width: 110px;
 }
 body main.container {
-  min-width: 1200px;
   padding: 1rem;
   background-color: #ffffff;
   border-radius: 8px;
   margin: 40px auto;
 }
-body main.container section.container-header {
+body main.container .container-header {
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: start;
   margin-bottom: 1rem;
 }
-body main.container section.container-header h1 {
+body main.container .container-header h1 {
   font-size: 1.5rem;
+  margin: 10px 0;
 }
-body main.container section.container-header .container-actions {
+body main.container .container-header .container-actions {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
+  margin: 10px 0;
 }
-body main.container section.container-header .container-actions button {
+body main.container .container-header .container-actions button {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
 }
-body main.container section.container-header .container-actions .annuler {
+body main.container .container-header .container-actions .annuler {
   background-color: #dc3545;
   color: white;
 }
-body main.container section.container-header .container-actions .enregistrer {
+body main.container .container-header .container-actions .enregistrer {
   background-color: #0c72bc;
   color: white;
 }
@@ -143,6 +148,7 @@ body main.container div.container-grid .column {
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 250px;
 }
 body main.container div.container-grid .column h1 {
   font-size: 1.25rem;
@@ -152,6 +158,7 @@ body main.container div.container-grid .column form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  align-items: center;
 }
 body main.container div.container-grid .column form label {
   font-weight: bold;
@@ -164,6 +171,29 @@ body main.container div.container-grid .column form textarea {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+@media screen and (min-width: 800px) {
+  header {
+    flex-direction: row !important;
+  }
+  header .headerBlockOne, header .headerBlockTwo {
+    flex-direction: row !important;
+    align-items: center;
+  }
+  main.container {
+    min-width: 1200px;
+  }
+  main.container section.container-header {
+    flex-direction: row !important;
+    align-items: center;
+  }
+  main.container section.container-header h1 {
+    margin: 0;
+  }
+  main.container section.container-header .container-actions {
+    margin: 0;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
