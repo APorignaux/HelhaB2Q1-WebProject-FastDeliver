@@ -19,6 +19,18 @@ let db = new sqlite3.Database('./DataBase/database.sqlite', sqlite3.OPEN_READWRI
   }
 });
 
+app.get('/Driver/:email', (req, res) => {
+    const driverEmail = req.params.email;
+    db.all('SELECT Nom FROM Users WHERE Email = ?', [driverEmail], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).json({ error: 'Internal server error' });
+        } else {
+            res.json({ results: rows });
+        }
+    });
+});
+
 app.get('/Livraisons', (req, res) => {
     db.all('SELECT * FROM Livraisons', (err, rows) => {
         if (err) {
@@ -30,6 +42,18 @@ app.get('/Livraisons', (req, res) => {
     });
 });
 
+app.get('/Livraisons/:trackNum', (req, res) => {
+    const trackNum = req.params.trackNum;
+    db.all('SELECT * FROM Livraisons WHERE NumSuivis = ?', [trackNum],function (err, rows) {
+        if (err) {
+            console.error(err.message);
+            res.status(500).json({ error: 'Internal server error' });
+        } else {
+            res.json({ results: rows });
+        }
+    });
+});
+
 app.get('/Client', (req, res) => {
     db.all('SELECT * FROM Client', (err, rows) => {
         if (err) {
@@ -37,6 +61,18 @@ app.get('/Client', (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
         } else {
         res.json({ results: rows });
+        }
+    });
+});
+
+app.get('/Client/:email', (req, res) => {
+    const clientEmail = req.params.email;
+    db.all('SELECT * FROM Client WHERE Email = ?', [clientEmail],(err, rows) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).json({ error: 'Internal server error' });
+        } else {
+            res.json({ results: rows });
         }
     });
 });
