@@ -19,14 +19,14 @@ let db = new sqlite3.Database('./DataBase/database.sqlite', sqlite3.OPEN_READWRI
   }
 });
 
-app.get('/Driver/:email', (req, res) => {
+app.get('/Livreur/:email', (req, res) => {
     const driverEmail = req.params.email;
-    db.all('SELECT Nom FROM Users WHERE Email = ?', [driverEmail], (err, rows) => {
+    db.get('SELECT Nom FROM Users WHERE Email = ?', [driverEmail], (err, row) => {
         if (err) {
             console.error(err.message);
             res.status(500).json({ error: 'Internal server error' });
         } else {
-            res.json({ results: rows });
+            res.json({ result: row });
         }
     });
 });
@@ -44,12 +44,12 @@ app.get('/Livraisons', (req, res) => {
 
 app.get('/Livraisons/:trackNum', (req, res) => {
     const trackNum = req.params.trackNum;
-    db.all('SELECT * FROM Livraisons WHERE NumSuivis = ?', [trackNum],function (err, rows) {
+    db.get('SELECT * FROM Livraisons WHERE NumSuivis = ?', [trackNum], (err, row) => {
         if (err) {
             console.error(err.message);
             res.status(500).json({ error: 'Internal server error' });
         } else {
-            res.json({ results: rows });
+            res.json({ result: row });
         }
     });
 });
@@ -67,12 +67,12 @@ app.get('/Client', (req, res) => {
 
 app.get('/Client/:email', (req, res) => {
     const clientEmail = req.params.email;
-    db.all('SELECT * FROM Client WHERE Email = ?', [clientEmail],(err, rows) => {
+    db.get('SELECT * FROM Client WHERE Email = ?', [clientEmail],(err, row) => {
         if (err) {
             console.error(err.message);
             res.status(500).json({ error: 'Internal server error' });
         } else {
-            res.json({ results: rows });
+            res.json({ result: row });
         }
     });
 });

@@ -55,6 +55,14 @@ body{
       h1 {
         font-size: 1.5rem;
         margin: 10px 0;
+
+        a{
+          text-decoration: none;
+          color: black;
+          :hover{
+            cursor: pointer;
+          }
+        }
       }
 
       .container-actions {

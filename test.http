@@ -2,12 +2,19 @@
 GET http://localhost:3010/Livraisons
 
 ### GET Unique Livraisons
-GET http://localhost:3010/Livraisons/FD34871902BE
+GET http://localhost:3010/Livraisons/FD28465937BE
 
 ### GET Driver
 GET http://localhost:3010/Driver/emma@fastdeliver.com
 
+### GET Client
+GET http://localhost:3010/Client
+
+### GET Unique Client
+GET http://localhost:3010/Client/client1@example.com
+
 ### DELETE Livraisons
 DELETE http://localhost:3010/Livraisons/FD28465937BE
+
 ###
 GET http://localhost:3010/ZAza
