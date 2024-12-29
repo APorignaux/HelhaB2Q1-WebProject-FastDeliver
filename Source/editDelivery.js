@@ -66,8 +66,6 @@ async function fetchDeliveryInfos(trackingNum) {
             const driver = dataDriver.result;
 
             inputDriver.value = driver.Nom;
-
-            alert('fine');
         })
         .catch(err => {
             console.error("Error:", err);

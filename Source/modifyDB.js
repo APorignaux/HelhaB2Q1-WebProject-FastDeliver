@@ -10,7 +10,7 @@ async function deleteDelivery(element) {
             alert("Livraison supprimée");
             element.closest('tr').remove();
         } else {
-            alert(data.error || "Une erreur inconnue est survenue");
+            throw new Error(data.error || "Une erreur inconnue est survenue");
         }
     } catch (error) {
         console.error("Erreur :", error);
