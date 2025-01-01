@@ -143,6 +143,20 @@ app.patch('/Livraisons/:id', (req, res) => {
    });
 });
 
+app.patch('/Client/:email', (req, res) => {
+    const clientEmail = req.params.email;
+    db.run('UPDATE Client SET Nom = ?, Telephone = ?, Addresse = ? WHERE Email = ?', [req.body.Nom, req.body.Telephone, req.body.Addresse, clientEmail], function (err) {
+        if (err) {
+            console.error(err.message);
+            res.status(500).json({ error: 'Internal server error' });
+        } else if (this.changes === 0) {
+            res.status(404).json({ error: 'Client not found' });
+        } else {
+            res.json({ message: 'Client updated successfully' });
+        }
+    });
+});
+
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
 

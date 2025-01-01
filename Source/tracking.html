@@ -8,55 +8,121 @@
     <link rel="stylesheet" href="Styles/tracking.css">
 <body>
     <header>
-         <h1>FastDeliver</h1>
-         <button><a href="login.html">Connexion</a></button>
+        <h1>FastDeliver</h1>
+        <button><a href="login.html">Connexion</a></button>
     </header>
     <main>
-         <h1>Suivi du colis</h1>
-         <h2>N° FB54650056</h2>
-         <h3>En livraison</h3>
-         <hr>
-         <div class="container-details">
-             <h1>Détails de livraison</h1>
-             <div class="grid">
-                 <div class="column">
-                     <label id="label-data-estimated">Date estimée :</label>
-                     <data id="date-estimated"></data>
-                 </div>
-                 <div class="column">
-                     <label id="label-poids">Poids :</label>
-                     <data id="poids"></data>
-                 </div>
-                 <div class="column">
-                     <label id="label-destinataire">Destinataire :</label>
-                     <data id="destinataire"></data>
-                 </div>
-             </div>
-         </div>
-         <div class="container-tracking">
-             <h1>Statut de livraison</h1>
-             <ul class="progress-tracker">
-                 <li class="progress-step is-complete">
-                     <div class="progress-marker"></div>
-                 </li>
-                 <li class="progress-step is-complete">
-                     <div class="progress-marker"></div>
-                 </li>
-                 <li class="progress-step is-active">
-                     <div class="progress-marker"></div>
-                 </li>
-                 <li class="progress-step">
-                     <div class="progress-marker"></div>
-                 </li>
-                 <li class="progress-step">
-                     <div class="progress-marker"></div>
-                 </li>
-             </ul>
-         </div>
-         <div class="container-adresse">
-             <h1>Adresse de livraison</h1>
-             Adresse
-         </div>
+        <div class="status-and-trackNum">
+            <h2 class="margin-left-20">Suivi du colis</h2>
+            <section class="tracking-delivery-info margin-left-20">
+                <h3>N° FB54650056</h3>
+                <p>En livraison</p>
+            </section>
+        </div>
+        <hr>
+        <div class="container-details">
+            <h2 class="margin-left-20">Détails de livraison</h2>
+            <section class="tracking-details margin-left-20">
+                <div class="column">
+                    <p id="label-data-estimated">Date estimée :</p>
+                    <p>2024-10-22</p>
+                </div>
+                <div class="column">
+                    <p id="label-poids">Poids :</p>
+                    <p id="poids">4.5 kg</p>
+                </div>
+                <div class="column">
+                    <p id="label-destinataire">Destinataire :</p>
+                    <p id="destinataire">Joe Biden</p>
+                </div>
+            </section>
+        </div>
+        <div class="container-tracking">
+            <h2 class="margin-left-20">Statut de livraison</h2>
+            <ul class="progress-tracker">
+                <li class="progress-step is-complete">
+                    <div class="progress-marker">
+                        <div class="progress-header">
+                            <span class="bullet-point"></span>
+                            <h4 class="progress-state">Commande reçue</h4>
+                        </div>
+                        <div class="progress-main">
+                            <div class="date-and-hour">
+                                <p class="progress-date">11/11/2024 </p>
+                                <p class="progress-date">08:00:00</p>
+                            </div>
+                            <p class="progress-text">Votre colis est en cours de préparation</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="progress-step is-complete">
+                    <div class="progress-marker">
+                        <div class="progress-header">
+                            <span class="bullet-point"></span>
+                            <h4 class="progress-state">En préparation</h4>
+                        </div>
+                        <div class="progress-main">
+                            <div class="date-and-hour">
+                                <p class="progress-date">11/11/2024 </p>
+                                <p class="progress-date">08:00:00</p>
+                            </div>
+                            <p class="progress-text">Votre colis est en cours de préparation</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="progress-step is-active">
+                    <div class="progress-marker">
+                        <div class="progress-header">
+                            <span class="bullet-point"></span>
+                            <h4 class="progress-state">En livraison</h4>
+                        </div>
+                        <div class="progress-main">
+                            <div class="date-and-hour">
+                                <p class="progress-date">11/11/2024 </p>
+                                <p class="progress-date">08:00:00</p>
+                            </div>
+                            <p class="progress-text">Votre colis est en cours de préparation</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="progress-step">
+                    <div class="progress-marker">
+                        <div class="progress-header">
+                            <span class="bullet-point"></span>
+                            <h4 class="progress-state">Livré</h4>
+                        </div>
+                        <div class="progress-main">
+                            <div class="date-and-hour">
+                                <p class="progress-date">11/11/2024 </p>
+                                <p class="progress-date">08:00:00</p>
+                            </div>
+                            <p class="progress-text">Votre colis est en cours de préparation</p>
+                        </div>
+                    </div>
+                </li>
+                <template id="delivery-state-model">
+                    <li class="progress-step is-complete">
+                        <div class="progress-marker">
+                            <div class="progress-header">
+                                <span class="bullet-point"></span>
+                                <h4 class="progress-state">Commande reçue</h4>
+                            </div>
+                            <div class="progress-main">
+                                <div class="date-and-hour">
+                                    <p class="progress-date">11/11/2024 </p>
+                                    <p class="progress-date">08:00:00</p>
+                                </div>
+                                <p class="progress-text">Votre colis est en cours de préparation</p>
+                            </div>
+                        </div>
+                    </li>
+                </template>
+            </ul>
+        </div>
+        <div class="tracking-delivery-address margin-left-20">
+            <h3 class="">Adresse de livraison</h3>
+            <p>45 Avenue des Champs-Élysées, 75008 Paris</p>
+        </div>
     </main>
 </body>
 </html>

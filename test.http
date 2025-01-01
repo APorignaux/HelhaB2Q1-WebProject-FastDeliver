@@ -13,6 +13,16 @@ GET http://localhost:3010/Client
 ### GET Unique Client
 GET http://localhost:3010/Client/client1@example.com
 
+### PATCH CLIENT
+PATCH http://localhost:3010/Client/client1@example.com
+Content-Type: application/json
+
+{
+  "Nom": "Sam Gamegie",
+  "Telephone": "0604567890",
+  "Addresse": "12 rue de la paix, 59000 Lille"
+}
+
 ### DELETE Livraisons
 DELETE http://localhost:3010/Livraisons/FD28465937BE
 

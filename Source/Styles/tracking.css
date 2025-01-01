@@ -1,16 +1,117 @@
+body {
+  background-color: color(srgb 0.9638 0.9688 0.9817);
+}
+body header {
+  background-color: white;
+}
 body main {
-  max-width: 800px;
-  max-height: fit-content;
-  padding: 1rem;
+  background-color: white;
+  margin: 15px;
+  border-radius: 5px;
+  padding-bottom: 20px;
+}
+body main h2 {
+  padding-top: 15px;
+}
+body main .margin-left-20 {
+  margin-left: 20px;
+}
+body main .status-and-trackNum > * {
+  margin-bottom: 20px;
+}
+body main .status-and-trackNum .tracking-delivery-info {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
 }
 body main .container-details {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-body main .container-adresse {
   display: flex;
-  background-color: #f9f9fb;
-  width: 100%;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 40px;
 }
+body main .container-details .tracking-details {
+  display: flex;
+  flex-direction: column;
+}
+body main .container-details .tracking-details .column {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: start;
+  padding-bottom: 20px;
+}
+body main .container-details .tracking-details .column p {
+  margin: 0;
+}
+body main .container-tracking {
+  margin-bottom: 40px;
+}
+body main .container-tracking > h2 {
+  margin-bottom: 30px;
+}
+body main .container-tracking .progress-tracker li {
+  list-style: none;
+}
+body main .container-tracking .progress-tracker li .progress-marker {
+  margin-left: 35px;
+  border-left: 2px solid #ddd;
+  padding-bottom: 15px;
+}
+body main .container-tracking .progress-tracker li .progress-marker .progress-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+body main .container-tracking .progress-tracker li .progress-marker .progress-header .bullet-point {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #4CAF50;
+  border-radius: 50%;
+  margin-right: 20px;
+  margin-left: -11px;
+}
+body main .container-tracking .progress-tracker li .progress-marker .progress-main {
+  margin-left: 30px;
+}
+body main .tracking-delivery-address {
+  background-color: lightgray;
+  border-radius: 5px;
+  margin-right: 20px;
+  padding: 20px;
+}
+body main .tracking-delivery-address > * {
+  margin-left: 20px;
+}
+
+/*
+media screen {
+  :nth-child(2){
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}*/
+/*
+ margin: 0;
+      padding: 0;
+      position: relative;
+      border-left: 2px solid #ddd;
+li {
+  list-style: none;
+  position: relative;
+  margin-bottom: 20px;
+  padding-left: 60px;
+  ::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    border: 2px solid white;
+*/
 
 /*# sourceMappingURL=tracking.css.map */

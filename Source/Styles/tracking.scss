@@ -1,29 +1,135 @@
 @use "variables" as *;
 @use "mixins" as *;
 
-body {
-  main {
-    max-width: 800px;
-    max-height: fit-content;
-    padding: $spacing;
+$bullet-point-size : 20px;
+$bullet-point-margin-right : 20px;
+$border-size: 2px;
+$background-color: color(srgb 0.9638 0.9688 0.9817);
 
-    .container-details {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+body
+{
+    background-color: $background-color;
+  header{
+    background-color: white;
+  }
+  main
+  {
+    background-color: white;
+    margin: 15px;
+    border-radius: 5px;
+    padding-bottom: 20px;
+    h2{
+      padding-top: 15px;
+    }
+    .margin-left-20
+    {
+      margin-left: 20px;
+    }
+    .status-and-trackNum > *
+    {
+      margin-bottom: 20px;
+    }
 
-      .column{
+    .status-and-trackNum{
 
+      .tracking-delivery-info{
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
       }
     }
 
-    .container-tracking {
+    .container-details{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-bottom: 40px;
+      .tracking-details{
+        display: flex;
+        flex-direction: column;
 
+        .column{
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          text-align: start;
+          padding-bottom: 20px;
+          p{
+            margin: 0;
+          }
+        }
+      }
     }
-    .container-adresse {
-      display: flex;
-      background-color: $color-grey;
-      width: 100%;
-
+    .container-tracking{
+      margin-bottom: 40px;
+      > h2{
+        margin-bottom: 30px;
+      }
+      .progress-tracker{
+        li{
+          list-style: none;
+          .progress-marker{
+            margin-left: 35px;
+            border-left: $border-size solid #ddd;
+            padding-bottom: 15px;
+            .progress-header{
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              .bullet-point{
+                display: inline-block;
+                width: $bullet-point-size;
+                height: $bullet-point-size;
+                background-color: #4CAF50;
+                border-radius: 50%;
+                margin-right: $bullet-point-margin-right;
+                margin-left: -$bullet-point-size/2 - $border-size/2;
+              }
+            }
+            .progress-main{
+              margin-left: ($bullet-point-margin-right + $bullet-point-size/2);
+            }
+          }
+        }
+      }
+    }
+    .tracking-delivery-address{
+      background-color: lightgray;
+      border-radius: 5px;
+      margin-right: 20px;
+      padding: 20px;
+      > *{
+        margin-left : 20px;
+      }
     }
   }
 }
+/*
+media screen {
+  :nth-child(2){
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}*/
+
+/*
+ margin: 0;
+      padding: 0;
+      position: relative;
+      border-left: 2px solid #ddd;
+li {
+  list-style: none;
+  position: relative;
+  margin-bottom: 20px;
+  padding-left: 60px;
+  ::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    border: 2px solid white;
+*/
