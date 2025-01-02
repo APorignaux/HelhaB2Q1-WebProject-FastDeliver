@@ -6,7 +6,8 @@ async function fetchDeliveries() {
 
     const response = await fetch('/Livraisons',{
         headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('authtoken')
+            'Authorization': 'Bearer ' + localStorage.getItem('authtoken'),
+            'email' : "admin@fastdeliver.com"
         }
     });
     const data = await response.json(); //le methode json est asynchrone et retourne un promesse

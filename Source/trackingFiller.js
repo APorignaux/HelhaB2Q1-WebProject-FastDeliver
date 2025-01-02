@@ -13,7 +13,12 @@ const params = new URLSearchParams(url.search);
 const NumSuivis = params.get('DeliveryID');
 
 async function fillThePage(){
-    const response = await fetch('/SuiviLivraison/' + NumSuivis);
+    const response = await fetch('/SuiviLivraison/' + NumSuivis, {
+        headers :{
+            'Authorization': 'Bearer ' + localStorage.getItem('authtoken'),
+            'email': localStorage.getItem('email')
+        }
+    });
     const responseData = await response.json();
     const deliveryTrack = responseData.results;
 

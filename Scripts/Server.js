@@ -186,9 +186,9 @@ app.post('/login', (req, res) => {
                 const token = jwt.sign({ login: row.Email }, process.env.JWT_ACCESS_SECRET, { expiresIn: "1h" }); //JWT_ACCESS_SECRET is a secret key to create JWT
                 if (row.Role === 'Administrateur') {
                     // Authentication successful
-                    res.json({ message: 'Access granted', redirect: '/admin.html' , access_token: token });
+                    res.json({ message: 'Access granted', redirect: '/admin.html' , access_token: token, email: email });
                 } else if(row.Role === 'Livreur') {
-                    res.json({ message: 'Access granted', redirect: '/driver-next.html?user=' + email, access_token: token });
+                    res.json({ message: 'Access granted', redirect: '/driver-next.html?user=' + email, access_token: token, email: email });
                 } else {
                     res.status(403).send('Access denied');
                 }
@@ -207,8 +207,10 @@ function authenticateToken(req, res, next) { //this function is middleware
 
     jwt.verify(token, process.env.JWT_ACCESS_SECRET, (err, user) => { //verify if token received match with the token in the server
         if (err) return res.sendStatus(403);//See that you have a token but it's not (longer) valid
-        req.user = user;
-        next();//allow to exit the middleware, unvalid token stoped at return and never reach next
+        if (user.login === req.headers.email) {
+            req.user = user; // The decoded token payload
+            next(); //allow to exit the middleware, unvalid token stoped at return and never reach next
+        }
     });
 }
 
@@ -224,6 +226,19 @@ app.get('/SuiviLivraison/:trackNum', (req, res) => {
             res.json({ results: rows });
         }
     });
+});
+
+app.patch('/SuiviLivraison/:trackNum', (req, res) => {
+    const trackingNumber = req.params.trackNum;
+    db.run('UPDATE SuiviLivraison SET Date = ?, Heure = ?, Status = ? WHERE NumSuivis= ?;', [req.body.Date, req.body.Heure, req.body.Status, trackingNumber], function (err) {
+        if (err) {
+            console.error(err.message);
+            res.status(500).json({ error: 'Internal server error' });
+        } else {
+            res.json({ message: 'Tracking updated successfully' });
+        }
+    });
+
 });
 
 app.listen(port, () => {

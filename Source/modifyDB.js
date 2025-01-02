@@ -3,6 +3,10 @@ async function deleteDelivery(element) {
     try {
         const response = await fetch('/Livraisons/' + deliveryId, {
             method: 'DELETE',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('authtoken'),
+                'email': localStorage.getItem('email')
+            }
         });
         const data = await response.json();
 

@@ -5,7 +5,9 @@ async function fetchPatchDeliveryStatus(deliveryId, status) {
         const response = await fetch(`/Livraisons/${deliveryId}`, {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('authtoken'),
+                'email': localStorage.getItem('email')
             },
             body: JSON.stringify({ Status: status })
         });

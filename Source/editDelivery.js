@@ -36,7 +36,12 @@ function getDeliveryTrackingNum() {
 }
 
 async function fetchDeliveryInfos(trackingNum) {
-    fetch('/Livraisons/' + trackingNum)
+    fetch('/Livraisons/' + trackingNum, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('authtoken'),
+            'email': localStorage.getItem('email')
+        }
+    })
         .then(response => response.json())
         .then(data => {
             const delivery = data.result;
@@ -54,7 +59,13 @@ async function fetchDeliveryInfos(trackingNum) {
             const clientEmail = delivery.ClientEmail;
             livreurName = delivery.Livreur;
 
-            return fetch('/Client/' + clientEmail);
+            return fetch('/Client/' + clientEmail,
+                {
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('authtoken'),
+                        'email': localStorage.getItem('email')
+                    }
+                });
         })
         .then(responseClient => responseClient.json())
         .then(dataClient => {
@@ -65,7 +76,12 @@ async function fetchDeliveryInfos(trackingNum) {
             inputPhone.value = client.Telephone;
             inputExpeditionAddress.value = client.Addresse;
 
-            return fetch('/Livreur/' + livreurName);
+            return fetch('/Livreur/' + livreurName, {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('authtoken'),
+                    'email': localStorage.getItem('email')
+                }
+            });
         })
         .then(responseDriver => responseDriver.json())
         .then(dataDriver => {

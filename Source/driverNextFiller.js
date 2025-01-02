@@ -14,7 +14,8 @@ async function fetchCurrentDelivery() {
     currentDeliverycore.innerHTML = '';
     const response = await fetch('/Livraisons', {
         headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('authtoken')
+            'Authorization': 'Bearer ' + localStorage.getItem('authtoken'),
+            'email' : livreurMail
         }
     });
     const DeliveryData = await response.json();
@@ -23,7 +24,8 @@ async function fetchCurrentDelivery() {
 
     const responseClient = await fetch('/Client', {
         headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('authtoken')
+            'Authorization': 'Bearer ' + localStorage.getItem('authtoken'),
+            'email' : livreurMail
         }
     });
     const ClientData = await responseClient.json();
@@ -73,7 +75,8 @@ async function fetchNextDelivery() {
     nextDeliveryCore.innerHTML = '';
     const response = await fetch('/Livraisons', {
         headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('authtoken')
+            'Authorization': 'Bearer ' + localStorage.getItem('authtoken'),
+            'email' : livreurMail
         }
     });
     const DeliveryData = await response.json();

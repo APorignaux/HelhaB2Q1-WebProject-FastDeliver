@@ -14,8 +14,10 @@ document.querySelector('form').addEventListener('submit', async function(event) 
     });
 
     const result = await response.json();
+    console.log(result);
     if (response.ok) {
         localStorage.setItem('authtoken', result.access_token);
+        localStorage.setItem('email', result.email);
         window.location.href = result.redirect; // Redirect to the URL specified in the response
         alert("Login successful");
     } else {

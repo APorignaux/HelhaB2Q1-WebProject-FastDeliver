@@ -24,7 +24,9 @@ async function registerButtonHandler(trackingNum) {
        const deleteResponse = await fetch('/Livraisons/' + trackingNum, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('authtoken'),
+                'email': localStorage.getItem('email')
             }
         });
         if(deleteResponse.ok){
@@ -45,7 +47,9 @@ async function formsSubmiter(object){
         const response = await fetch('/Livraisons', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('authtoken'),
+                'email': localStorage.getItem('email')
             },
             body: JSON.stringify(object)
         });
