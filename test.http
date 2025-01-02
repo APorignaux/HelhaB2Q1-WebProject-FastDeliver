@@ -43,3 +43,12 @@ Content-Type: application/json
 
 ### GET SuiviLivraison
 GET http://localhost:3010/SuiviLivraison/FD28465937BE
+
+### POST Login
+POST http://localhost:3010/Login
+Content-Type: application/json
+
+{
+  "email": "emma@fastdeliver.com",
+  "password": "driver123"
+}

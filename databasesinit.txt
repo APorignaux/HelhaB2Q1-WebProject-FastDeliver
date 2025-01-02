@@ -60,98 +60,104 @@ INSERT INTO Livraisons (NumSuivis, Date, ClientEmail, Addresse, Poids, Status, L
 
 CREATE TABLE SuiviLivraison (
 NumSuivis VARCHAR(20) NOT NULL,
-Status VARCHAR(20),
-Date VARCHAR(10),
-Heure VARCHAR(10),
+DateEstimee VARCHAR(10) NOT NULL,
+Poids VARCHAR(10) NOT NULL,
+ClientName VARCHAR(20) NOT NULL,
+Addresse VARCHAR(50) NOT NULL,
+Status VARCHAR(20) NOT NULL,
+Date VARCHAR(10) NOT NULL,
+Heure VARCHAR(10) NOT NULL,
 CONSTRAINT NumSuivisFK FOREIGN KEY (NumSuivis)
-    REFERENCES Livraisons (NumSuivis)
+    REFERENCES Livraisons (NumSuivis),
+CONSTRAINT DateEstimeeFK FOREIGN KEY (DateEstimee)
+    REFERENCES Livraisons (Date),
+CONSTRAINT PoidsFK FOREIGN KEY (Poids)
+    REFERENCES Livraisons (Poids),
+CONSTRAINT ClientNameFK FOREIGN KEY (ClientName)
+    REFERENCES Client (Nom),
+CONSTRAINT AddresseFK FOREIGN KEY (Addresse)
+    REFERENCES Livraisons (Addresse)
 );
 
-INSERT INTO SuiviLivraison (NumSuivis, Status, Date, Heure)
-VALUES
-('FD28465937BE', 'En attente', '2024-11-29', '08:30'),
-('FD28465937BE', 'En cours', '2024-12-01', '10:15'),
-('FD28465937BE', 'Livré', '2024-12-01', '16:45');
-
 -- Livraison FD28465937BE : En cours
-INSERT INTO SuiviLivraison (NumSuivis, Status, Date, Heure)
+INSERT INTO SuiviLivraison (NumSuivis, DateEstimee, Poids, ClientName, Addresse, Status, Date, Heure)
 VALUES
-('FD28465937BE', 'En attente', '2024-11-29', '10:00'),
-('FD28465937BE', 'En cours', '2024-12-01', '08:30');
+('FD28465937BE', '2024-12-01', '3.125 kg', 'Jean Dupont', '123 Rue de Paris, 75001 Paris', 'En attente', '2024-11-29', '08:30'),
+('FD28465937BE', '2024-12-01', '3.125 kg', 'Jean Dupont', '123 Rue de Paris, 75001 Paris', 'En cours', '2024-12-01', '10:15'),
+('FD28465937BE', '2024-12-01', '3.125 kg', 'Jean Dupont', '123 Rue de Paris, 75001 Paris', 'Livré', '2024-12-01', '16:45');
 
 -- Livraison FD34871902BE : Livré
-INSERT INTO SuiviLivraison (NumSuivis, Status, Date, Heure)
+INSERT INTO SuiviLivraison (NumSuivis, DateEstimee, Poids, ClientName, Addresse, Status, Date, Heure)
 VALUES
-('FD34871902BE', 'En attente', '2024-11-30', '09:00'),
-('FD34871902BE', 'En cours', '2024-12-02', '08:00'),
-('FD34871902BE', 'Livré', '2024-12-02', '16:45');
+('FD34871902BE', '2024-12-02', '5.625 kg', 'Marie Curie', '45 Avenue des Champs, 75008 Paris', 'En attente', '2024-11-30', '09:00'),
+('FD34871902BE', '2024-12-02', '5.625 kg', 'Marie Curie', '45 Avenue des Champs, 75008 Paris', 'En cours', '2024-12-02', '08:00'),
+('FD34871902BE', '2024-12-02', '5.625 kg', 'Marie Curie', '45 Avenue des Champs, 75008 Paris', 'Livré', '2024-12-02', '16:45');
 
 -- Livraison FD76458219BE : En attente
-INSERT INTO SuiviLivraison (NumSuivis, Status, Date, Heure)
+INSERT INTO SuiviLivraison (NumSuivis, DateEstimee, Poids, ClientName, Addresse, Status, Date, Heure)
 VALUES
-('FD76458219BE', 'En attente', '2024-12-01', '10:00');
+('FD76458219BE', '2024-12-03', '2 kg', 'Paul Durand', '78 Boulevard Haussmann, 75009 Paris', 'En attente', '2024-12-01', '10:00');
 
 -- Livraison FD92103487BE : En attente
-INSERT INTO SuiviLivraison (NumSuivis, Status, Date, Heure)
+INSERT INTO SuiviLivraison (NumSuivis, DateEstimee, Poids, ClientName, Addresse, Status, Date, Heure)
 VALUES
-('FD92103487BE', 'En attente', '2024-12-02', '11:30');
+('FD92103487BE', '2024-12-04', '0.250 kg', 'Lucie Martin', '12 Rue de Lyon, 69003 Lyon', 'En attente', '2024-12-02', '11:30');
 
 -- Livraison FD63578241BE : En attente
-INSERT INTO SuiviLivraison (NumSuivis, Status, Date, Heure)
+INSERT INTO SuiviLivraison (NumSuivis, DateEstimee, Poids, ClientName, Addresse, Status, Date, Heure)
 VALUES
-('FD63578241BE', 'En attente', '2024-12-03', '08:45');
+('FD63578241BE', '2024-12-05', '10.275 kg', 'Sophie Bernard', '56 Place Bellecour, 69002 Lyon', 'En attente', '2024-12-03', '08:45');
 
 -- Livraison FD45821736BE : En attente
-INSERT INTO SuiviLivraison (NumSuivis, Status, Date, Heure)
+INSERT INTO SuiviLivraison (NumSuivis, DateEstimee, Poids, ClientName, Addresse, Status, Date, Heure)
 VALUES
-('FD45821736BE', 'En attente', '2024-12-04', '09:50');
+('FD45821736BE', '2024-12-06', '4.500 kg', 'Jean Dupont', '123 Rue de Paris, 75001 Paris', 'En attente', '2024-12-04', '09:50');
 
 -- Livraison FD98562147BE : Livré
-INSERT INTO SuiviLivraison (NumSuivis, Status, Date, Heure)
+INSERT INTO SuiviLivraison (NumSuivis, DateEstimee, Poids, ClientName, Addresse, Status, Date, Heure)
 VALUES
-('FD98562147BE', 'En attente', '2024-12-05', '08:30'),
-('FD98562147BE', 'En cours', '2024-12-07', '10:30'),
-('FD98562147BE', 'Livré', '2024-12-07', '16:50');
+('FD98562147BE', '2024-12-07', '3.250 kg', 'Marie Curie', '45 Avenue des Champs, 75008 Paris', 'En attente', '2024-12-05', '08:30'),
+('FD98562147BE', '2024-12-07', '3.250 kg', 'Marie Curie', '45 Avenue des Champs, 75008 Paris', 'En cours', '2024-12-07', '10:30'),
+('FD98562147BE', '2024-12-07', '3.250 kg', 'Marie Curie', '45 Avenue des Champs, 75008 Paris', 'Livré', '2024-12-07', '16:50');
 
 -- Livraison FD72148936BE : En attente
-INSERT INTO SuiviLivraison (NumSuivis, Status, Date, Heure)
+INSERT INTO SuiviLivraison (NumSuivis, DateEstimee, Poids, ClientName, Addresse, Status, Date, Heure)
 VALUES
-('FD72148936BE', 'En attente', '2024-12-06', '09:10');
+('FD72148936BE', '2024-12-08', '7.125 kg', 'Paul Durand', '78 Boulevard Haussmann, 75009 Paris', 'En attente', '2024-12-06', '09:10');
 
 -- Livraison FD62347918BE : En attente
-INSERT INTO SuiviLivraison (NumSuivis, Status, Date, Heure)
+INSERT INTO SuiviLivraison (NumSuivis, DateEstimee, Poids, ClientName, Addresse, Status, Date, Heure)
 VALUES
-('FD62347918BE', 'En attente', '2024-12-07', '08:20');
+('FD62347918BE', '2024-12-09', '1.500 kg', 'Lucie Martin', '12 Rue de Lyon, 69003 Lyon', 'En attente', '2024-12-07', '08:20');
 
 -- Livraison FD78456923BE : En attente
-INSERT INTO SuiviLivraison (NumSuivis, Status, Date, Heure)
+INSERT INTO SuiviLivraison (NumSuivis, DateEstimee, Poids, ClientName, Addresse, Status, Date, Heure)
 VALUES
-('FD78456923BE', 'En attente', '2024-12-08', '08:00');
+('FD78456923BE', '2024-12-10', '9.875 kg', 'Sophie Bernard', '56 Place Bellecour, 69002 Lyon', 'En attente', '2024-12-08', '08:00');
 
 -- Livraison FD34821979BE : En attente
-INSERT INTO SuiviLivraison (NumSuivis, Status, Date, Heure)
+INSERT INTO SuiviLivraison (NumSuivis, DateEstimee, Poids, ClientName, Addresse, Status, Date, Heure)
 VALUES
-('FD34821979BE', 'En attente', '2024-12-09', '09:20');
+('FD34821979BE', '2024-12-11', '6.250 kg', 'Jean Dupont', '123 Rue de Paris, 75001 Paris', 'En attente', '2024-12-09', '09:20');
 
 -- Livraison FD78351924BE : En cours
-INSERT INTO SuiviLivraison (NumSuivis, Status, Date, Heure)
+INSERT INTO SuiviLivraison (NumSuivis, DateEstimee, Poids, ClientName, Addresse, Status, Date, Heure)
 VALUES
-('FD78351924BE', 'En attente', '2024-12-10', '10:00'),
-('FD78351924BE', 'En livraison', '2024-12-12', '09:50');
+('FD78351924BE', '2024-12-12', '1.750 kg', 'Paul Durand', '78 Boulevard Haussmann, 75009 Paris', 'En attente', '2024-12-10', '10:00'),
+('FD78351924BE', '2024-12-12', '1.750 kg', 'Paul Durand', '78 Boulevard Haussmann, 75009 Paris', 'En livraison', '2024-12-12', '09:50');
 
 -- Livraison FD85962387BE : En cours
-INSERT INTO SuiviLivraison (NumSuivis, Status, Date, Heure)
+INSERT INTO SuiviLivraison (NumSuivis, DateEstimee, Poids, ClientName, Addresse, Status, Date, Heure)
 VALUES
-('FD85962387BE', 'En attente', '2024-12-11', '08:45'),
-('FD85962387BE', 'En cours', '2024-12-13', '10:00');
+('FD85962387BE', '2024-12-13', '2.500 kg', 'Lucie Martin', '12 Rue de Lyon, 69003 Lyon', 'En attente', '2024-12-11', '08:45'),
+('FD85962387BE', '2024-12-13', '2.500 kg', 'Lucie Martin', '12 Rue de Lyon, 69003 Lyon', 'En cours', '2024-12-13', '10:00');
 
 -- Livraison FD49321786BE : En attente
-INSERT INTO SuiviLivraison (NumSuivis, Status, Date, Heure)
+INSERT INTO SuiviLivraison (NumSuivis, DateEstimee, Poids, ClientName, Addresse, Status, Date, Heure)
 VALUES
-('FD49321786BE', 'En attente', '2024-12-12', '09:30');
+('FD49321786BE', '2024-12-14', '8.000 kg', 'Marie Curie', '45 Avenue des Champs, 75008 Paris', 'En attente', '2024-12-12', '09:30');
 
 -- Livraison FD36891457BE : En attente
-INSERT INTO SuiviLivraison (NumSuivis, Status, Date, Heure)
+INSERT INTO SuiviLivraison (NumSuivis, DateEstimee, Poids, ClientName, Addresse, Status, Date, Heure)
 VALUES
-('FD36891457BE', 'En attente', '2024-12-13', '08:20');
-
+('FD36891457BE', '2024-12-15', '12.500 kg', 'Sophie Bernard', '56 Place Bellecour, 69002 Lyon', 'En attente', '2024-12-13', '08:20');

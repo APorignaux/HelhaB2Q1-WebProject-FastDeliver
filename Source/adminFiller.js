@@ -4,7 +4,11 @@ const Table = document.querySelector('#tableBody');
 async function fetchDeliveries() {
     Table.innerHTML = '';
 
-    const response = await fetch('/Livraisons');
+    const response = await fetch('/Livraisons',{
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('authtoken')
+        }
+    });
     const data = await response.json(); //le methode json est asynchrone et retourne un promesse
     const deliveries = data.results;
 

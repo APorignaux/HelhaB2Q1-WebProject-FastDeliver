@@ -3,6 +3,9 @@ import sqlite3 from "sqlite3";
 import bodyParser from 'body-parser';
 import express from "express";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 
 const port = 3010;
 const app = expressModule();
@@ -12,6 +15,8 @@ app.use(expressModule.static('Source'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+//----------------------------Connexion To Database--------------------------------
+
 let db = new sqlite3.Database('./DataBase/database.sqlite', sqlite3.OPEN_READWRITE, (err) => { //va lier la base de donnée au server
   if (err) {
     console.error(err.message);
@@ -20,19 +25,9 @@ let db = new sqlite3.Database('./DataBase/database.sqlite', sqlite3.OPEN_READWRI
   }
 });
 
-app.get('/Livreur/:email', (req, res) => {
-    const driverEmail = req.params.email;
-    db.get('SELECT Nom FROM Users WHERE Email = ?', [driverEmail], (err, row) => {
-        if (err) {
-            console.error(err.message);
-            res.status(500).json({ error: 'Internal server error' });
-        } else {
-            res.json({ result: row });
-        }
-    });
-});
+//----------------------------Livraison--------------------------------
 
-app.get('/Livraisons', (req, res) => {
+app.get('/Livraisons', authenticateToken, (req, res) => {
     db.all('SELECT * FROM Livraisons', (err, rows) => {
         if (err) {
         console.error(err.message);
@@ -43,7 +38,7 @@ app.get('/Livraisons', (req, res) => {
     });
 });
 
-app.get('/Livraisons/:trackNum', (req, res) => {
+app.get('/Livraisons/:trackNum', authenticateToken, (req, res) => {
     const trackNum = req.params.trackNum;
     db.get('SELECT * FROM Livraisons WHERE NumSuivis = ?', [trackNum], (err, row) => {
         if (err) {
@@ -55,68 +50,21 @@ app.get('/Livraisons/:trackNum', (req, res) => {
     });
 });
 
-app.post('/Client', (req, res) => {
-    const { Nom, Email, Telephone, Addresse } = req.body;
-    db.run('INSERT INTO Client VALUES (?,?,?,?)', [Nom, Email, Telephone, Addresse], function (err) {
-        if (err) {
-        console.error(err.message);
-        res.status(500).json({ error: 'Internal server error' });
-        } else {
-        res.json({ message: 'Client added successfully' });
-        }
-    });
-});
-
-app.post('/Livreur', (req, res) => {
-    const { Nom, Email, Telephone, Addresse } = req.body;
-    db.run('INSERT INTO Users VALUES (?,?,?,?)', [Nom, Email, Telephone, Addresse], function (err) {
-        if (err) {
-        console.error(err.message);
-        res.status(500).json({ error: 'Internal server error' });
-        } else {
-        res.json({ message: 'Driver added successfully' });
-        }
-    });
-});
-
-app.get('/Client', (req, res) => {
-    db.all('SELECT * FROM Client', (err, rows) => {
-        if (err) {
-        console.error(err.message);
-        res.status(500).json({ error: 'Internal server error' });
-        } else {
-        res.json({ results: rows });
-        }
-    });
-});
-
-app.get('/Client/:email', (req, res) => {
-    const clientEmail = req.params.email;
-    db.get('SELECT * FROM Client WHERE Email = ?', [clientEmail],(err, row) => {
-        if (err) {
-            console.error(err.message);
-            res.status(500).json({ error: 'Internal server error' });
-        } else {
-            res.json({ result: row });
-        }
-    });
-});
-
-app.delete('/Livraisons/:id', (req, res) => {
+app.delete('/Livraisons/:id', authenticateToken, (req, res) => {
     const deliveryId = req.params.id;
     db.run('DELETE FROM Livraisons WHERE NumSuivis = ?', [deliveryId], function (err) {
         if (err) {
-        console.error(err.message);
-        res.status(500).json({ error: 'Internal server error' });
+            console.error(err.message);
+            res.status(500).json({ error: 'Internal server error' });
         } else if (this.changes === 0) {
-        res.status(404).json({ error: 'Delivery not found' });
+            res.status(404).json({ error: 'Delivery not found' });
         } else {
-        res.json({ message: 'Delivery deleted successfully' });
+            res.json({ message: 'Delivery deleted successfully' });
         }
     });
 });
 
-app.post('/Livraisons', (req, res) => {
+app.post('/Livraisons', authenticateToken, (req, res) => {
     const { NumSuivis, Date, ClientEmail, Addresse, Poids, Status, Livreur, Instructions } = req.body;
     db.run('INSERT INTO Livraisons (NumSuivis, Date, ClientEmail, Addresse, Poids, Status, Livreur, Instructions) VALUES (?, ?, ?, ?, ?, ?, ?, ?);',
         [NumSuivis, Date, ClientEmail, Addresse, Poids, Status, Livreur, Instructions], function (err) {
@@ -129,21 +77,58 @@ app.post('/Livraisons', (req, res) => {
         });
 });
 
-app.patch('/Livraisons/:id', (req, res) => {
-   const deliveryId = req.params.id;
-   db.run('UPDATE Livraisons SET Status = ? WHERE NumSuivis = ?', [req.body.Status, deliveryId], function (err) {
-         if (err) {
-         console.error(err.message);
-         res.status(500).json({ error: 'Internal server error' });
-         } else if (this.changes === 0) {
-         res.status(404).json({ error: 'Delivery not found' });
-         } else {
-         res.json({ message: 'Delivery updated successfully' });
-         }
-   });
+app.patch('/Livraisons/:id', authenticateToken, (req, res) => {
+    const deliveryId = req.params.id;
+    db.run('UPDATE Livraisons SET Status = ? WHERE NumSuivis = ?', [req.body.Status, deliveryId], function (err) {
+        if (err) {
+            console.error(err.message);
+            res.status(500).json({ error: 'Internal server error' });
+        } else if (this.changes === 0) {
+            res.status(404).json({ error: 'Delivery not found' });
+        } else {
+            res.json({ message: 'Delivery updated successfully' });
+        }
+    });
 });
 
-app.patch('/Client/:email', (req, res) => {
+//----------------------------Client--------------------------------
+
+app.post('/Client', authenticateToken, (req, res) => {
+    const { Nom, Email, Telephone, Addresse } = req.body;
+    db.run('INSERT INTO Client VALUES (?,?,?,?)', [Nom, Email, Telephone, Addresse], function (err) {
+        if (err) {
+        console.error(err.message);
+        res.status(500).json({ error: 'Internal server error' });
+        } else {
+        res.json({ message: 'Client added successfully' });
+        }
+    });
+});
+
+app.get('/Client', authenticateToken, (req, res) => {
+    db.all('SELECT * FROM Client', (err, rows) => {
+        if (err) {
+        console.error(err.message);
+        res.status(500).json({ error: 'Internal server error' });
+        } else {
+        res.json({ results: rows });
+        }
+    });
+});
+
+app.get('/Client/:email', authenticateToken, (req, res) => {
+    const clientEmail = req.params.email;
+    db.get('SELECT * FROM Client WHERE Email = ?', [clientEmail],(err, row) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).json({ error: 'Internal server error' });
+        } else {
+            res.json({ result: row });
+        }
+    });
+});
+
+app.patch('/Client/:email', authenticateToken, (req, res) => {
     const clientEmail = req.params.email;
     db.run('UPDATE Client SET Nom = ?, Telephone = ?, Addresse = ? WHERE Email = ?', [req.body.Nom, req.body.Telephone, req.body.Addresse, clientEmail], function (err) {
         if (err) {
@@ -157,23 +142,53 @@ app.patch('/Client/:email', (req, res) => {
     });
 });
 
+//----------------------------Livreur--------------------------------
+
+app.post('/Livreur', authenticateToken, (req, res) => {
+    const { Nom, Email, Telephone, Addresse } = req.body;
+    db.run('INSERT INTO Users VALUES (?,?,?,?)', [Nom, Email, Telephone, Addresse], function (err) {
+        if (err) {
+            console.error(err.message);
+            res.status(500).json({ error: 'Internal server error' });
+        } else {
+            res.json({ message: 'Driver added successfully' });
+        }
+    });
+});
+
+app.get('/Livreur/:email', authenticateToken, (req, res) => {
+    const driverEmail = req.params.email;
+    db.get('SELECT Nom FROM Users WHERE Email = ?', [driverEmail], (err, row) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).json({ error: 'Internal server error' });
+        } else {
+            res.json({ result: row });
+        }
+    });
+});
+
+//----------------------------Login--------------------------------
+
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
 
-    db.get('SELECT Email,MotDePasse,Role FROM Users WHERE Email = ?', [email], (err, row) => {
+    db.get('SELECT Email,MotDePasse,Role FROM Users WHERE Email = ?', [email], async (err, row) => {
         if (err) {
             console.error('Error querying database:', err.message);
             res.status(500).send('Internal server error');
         } else if (!row) { /*pas d'utilisateur avec cet email*/
             res.status(401).send('Invalid email or password');
         } else {
-            const passwordMatch = bcrypt.compareSync(password, row.MotDePasse);
+            const passwordMatch = await bcrypt.compare(password, row.MotDePasse);
             if (passwordMatch) {
+                //JWT creation
+                const token = jwt.sign({ login: row.Email }, process.env.JWT_ACCESS_SECRET, { expiresIn: "1h" }); //JWT_ACCESS_SECRET is a secret key to create JWT
                 if (row.Role === 'Administrateur') {
                     // Authentication successful
-                    res.json({ message: 'Access granted', redirect: '/admin.html' });
+                    res.json({ message: 'Access granted', redirect: '/admin.html' , access_token: token });
                 } else if(row.Role === 'Livreur') {
-                    res.json({ message: 'Access granted', redirect: '/driver-next.html?user=' + email });
+                    res.json({ message: 'Access granted', redirect: '/driver-next.html?user=' + email, access_token: token });
                 } else {
                     res.status(403).send('Access denied');
                 }
@@ -183,6 +198,21 @@ app.post('/login', (req, res) => {
         }
     });
 });
+
+function authenticateToken(req, res, next) { //this function is middleware
+    const tokenHeader = req.headers['authorization'];
+    //verify that tokenHeader exist if true store token else store undefined
+    const token = tokenHeader.split(' ')[1]; //split the tokenHeader and store the second part
+    if (token == null) return res.sendStatus(401);//401 mean no token
+
+    jwt.verify(token, process.env.JWT_ACCESS_SECRET, (err, user) => { //verify if token received match with the token in the server
+        if (err) return res.sendStatus(403);//See that you have a token but it's not (longer) valid
+        req.user = user;
+        next();//allow to exit the middleware, unvalid token stoped at return and never reach next
+    });
+}
+
+//----------------------------SuiviLivraison--------------------------------
 
 app.get('/SuiviLivraison/:trackNum', (req, res) => {
     const trackingNumber = req.params.trackNum;

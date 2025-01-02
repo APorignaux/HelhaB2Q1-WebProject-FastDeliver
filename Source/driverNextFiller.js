@@ -12,12 +12,20 @@ const livreurMail = params.get('user');
 
 async function fetchCurrentDelivery() {
     currentDeliverycore.innerHTML = '';
-    const response = await fetch('/Livraisons');
+    const response = await fetch('/Livraisons', {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('authtoken')
+        }
+    });
     const DeliveryData = await response.json();
     const delivery = DeliveryData.results;
     let driverDeliveries = [];
 
-    const responseClient = await fetch('/Client');
+    const responseClient = await fetch('/Client', {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('authtoken')
+        }
+    });
     const ClientData = await responseClient.json();
     const client = ClientData.results;
     let currentClient = undefined;
@@ -63,7 +71,11 @@ async function fetchCurrentDelivery() {
 
 async function fetchNextDelivery() {
     nextDeliveryCore.innerHTML = '';
-    const response = await fetch('/Livraisons');
+    const response = await fetch('/Livraisons', {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('authtoken')
+        }
+    });
     const DeliveryData = await response.json();
     let delivery = DeliveryData.results;
 

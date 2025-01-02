@@ -17,22 +17,12 @@ async function fillThePage(){
     const responseData = await response.json();
     const deliveryTrack = responseData.results;
 
-    const responseLivraison = await fetch('/Livraisons/' + NumSuivis);
-    const responseDataLivraison = await responseLivraison.json();
-    const delivery = responseDataLivraison.result;
-
-    const responseClient = await fetch('/Client/' + delivery.ClientEmail);
-    const responseDataClient = await responseClient.json();
-    const client = responseDataClient.result;
-
-    console.log(deliveryTrack);
-
-    deliveryDate.innerHTML = delivery.Date;
-    deliveryWeight.innerHTML = delivery.Poids;
-    deliveryClient.innerHTML = client.Nom;
-    deliveryAddress.innerHTML = delivery.Addresse;
-    deliveryTrackingNum.innerHTML = delivery.NumSuivis;
-    delivryStatus.innerHTML = delivery.Status;
+    deliveryDate.innerHTML = deliveryTrack[deliveryTrack.length -1].DateEstimee;
+    deliveryWeight.innerHTML = deliveryTrack[deliveryTrack.length -1].Poids;
+    deliveryClient.innerHTML = deliveryTrack[deliveryTrack.length -1].ClientName;
+    deliveryAddress.innerHTML = deliveryTrack[deliveryTrack.length -1].Addresse;
+    deliveryTrackingNum.innerHTML = deliveryTrack[deliveryTrack.length -1].NumSuivis;
+    delivryStatus.innerHTML = deliveryTrack[deliveryTrack.length -1].Status;
 
     statesContainer.innerHTML = '';
     for (let i = 0; i < deliveryTrack.length; i++) {

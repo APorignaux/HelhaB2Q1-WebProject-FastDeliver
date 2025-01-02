@@ -26,6 +26,12 @@ function getDeliveryTrackingNum() {
         console.log("ID retrieved successfully: " + deliveryTrackingNum);
         fetchDeliveryInfos(deliveryTrackingNum);
     }
+    else if(params.has('newDeliveryID'))
+    {
+        deliveryTrackingNum = params.get('newDeliveryID');
+        console.log("New ID generated successfully: " + deliveryTrackingNum);
+        inputTrackingNum.value = deliveryTrackingNum;
+    }
     else console.log("ID non existant");
 }
 
