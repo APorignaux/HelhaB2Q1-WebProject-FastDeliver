@@ -85,33 +85,14 @@ body main .tracking-delivery-address > * {
   margin-left: 20px;
 }
 
-/*
-media screen {
-  :nth-child(2){
-    margin-left: 20px;
-    margin-right: 20px;
+@media screen and (min-width: 800px) {
+  body main div.container-details section.tracking-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 900px;
   }
-}*/
-/*
- margin: 0;
-      padding: 0;
-      position: relative;
-      border-left: 2px solid #ddd;
-li {
-  list-style: none;
-  position: relative;
-  margin-bottom: 20px;
-  padding-left: 60px;
-  ::before {
-    content: '';
-    position: absolute;
-    left: 20px;
-    top: 5px;
-    width: 16px;
-    height: 16px;
-    background-color: #4CAF50;
-    border-radius: 50%;
-    border: 2px solid white;
-*/
+}
 
 /*# sourceMappingURL=tracking.css.map */

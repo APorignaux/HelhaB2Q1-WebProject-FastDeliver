@@ -5,6 +5,7 @@
     <title>FastDeliver - Livraison rapide de colis</title>
     <link rel="stylesheet" href="Styles/common.css">
     <link rel="stylesheet" href="Styles/index.css">
+    <script src="./indexRedirections.js" defer></script>
 </head>
 <body>
     <header>
@@ -17,8 +18,8 @@
                 <h1>Livraison rapide et sécurisée de vos colis</h1>
                 <p>Service de livraison 24/7 partout en Belgique</p>
                 <form>
-                    <input type="text" name="tracking_number" placeholder="Entrez votre numéro de suivi">
-                    <button type="submit">Suivre mon colis</button>
+                    <input type="text" name="tracking_number" id="packetSearchBar" placeholder="Entrez votre numéro de suivi">
+                    <button type="submit" id="packetSearchButton">Suivre mon colis</button>
                 </form>
             </div>
             <div class="infos">

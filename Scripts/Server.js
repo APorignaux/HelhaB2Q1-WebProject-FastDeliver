@@ -184,6 +184,18 @@ app.post('/login', (req, res) => {
     });
 });
 
+app.get('/SuiviLivraison/:trackNum', (req, res) => {
+    const trackingNumber = req.params.trackNum;
+    db.all('SELECT * FROM SuiviLivraison WHERE NumSuivis = ?', [trackingNumber], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).json({ error: 'Internal server error' });
+        } else {
+            res.json({ results: rows });
+        }
+    });
+});
+
 app.listen(port, () => {
   console.log('Server is running on port 3010');
 });

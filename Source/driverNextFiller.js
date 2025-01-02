@@ -10,12 +10,6 @@ const url = new URL(window.location.href);
 const params = new URLSearchParams(url.search);
 const livreurMail = params.get('user');
 
-//const livreurMail = 'emma@fastdeliver.com';
-
-async function fetchDriver() {
-
-}
-
 async function fetchCurrentDelivery() {
     currentDeliverycore.innerHTML = '';
     const response = await fetch('/Livraisons');

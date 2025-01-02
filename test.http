@@ -40,3 +40,6 @@ Content-Type: application/json
   "Livreur": "emma@fastdeliver.com",
   "Instructions": "Fragile"
 }
+
+### GET SuiviLivraison
+GET http://localhost:3010/SuiviLivraison/FD28465937BE
