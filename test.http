@@ -52,3 +52,11 @@ Content-Type: application/json
   "email": "emma@fastdeliver.com",
   "password": "driver123"
 }
+
+### POST RefreshToken
+POST http://localhost:3010/RefreshToken
+Content-Type: application/json
+
+{
+  "refresh" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGZhc3RkZWxpdmVyLmNvbSIsImlhdCI6MTczNTkzNzQ0OSwiZXhwIjoxNzM4NTI5NDQ5fQ.-pmIcqyt0k84coEOHSNnTtKwliheB-QmhaYuXgh3Qic"
+}

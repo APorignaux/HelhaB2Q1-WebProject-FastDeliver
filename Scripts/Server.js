@@ -200,7 +200,22 @@ app.post('/login', (req, res) => {
     });
 });
 
-app.post('/refresh', (req, res) => {
+
+
+app.post('/RefreshToken',(req, res) => {
+    const refreshToken = req.body.refresh;
+    if (!refreshToken) {
+        return res.status(401).json({ error: 'Access denied, refresh token missing, try to login' });
+    }
+
+    jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET, (err, user) => {
+        if (err) {
+            return res.status(403).json({ error: 'Invalid or expired token' });
+        }
+
+        const accessToken = jwt.sign({ login: user.email }, process.env.JWT_ACCESS_SECRET, { expiresIn: "1h" });
+        res.json({ accessToken: accessToken });
+    });
 
 });
 
