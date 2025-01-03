@@ -42,7 +42,14 @@ async function fetchDeliveryInfos(trackingNum) {
             'email': localStorage.getItem('email')
         }
     })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(errorData => {
+                    throw new Error(errorData.error || 'Unknown error');
+                });
+            }
+            return response.json();
+        })
         .then(data => {
             const delivery = data.result;
             console.log(delivery);
@@ -67,7 +74,14 @@ async function fetchDeliveryInfos(trackingNum) {
                     }
                 });
         })
-        .then(responseClient => responseClient.json())
+        .then(responseClient => {
+            if (!responseClient.ok) {
+                return responseClient.json().then(errorData => {
+                    throw new Error(errorData.error || 'Unknown error');
+                });
+            }
+            responseClient.json()
+        })
         .then(dataClient => {
             const client = dataClient.result;
 
@@ -83,7 +97,14 @@ async function fetchDeliveryInfos(trackingNum) {
                 }
             });
         })
-        .then(responseDriver => responseDriver.json())
+        .then(responseDriver => {
+            if (!responseDriver.ok) {
+                return responseDriver.json().then(errorData => {
+                    throw new Error(errorData.error || 'Unknown error');
+                });
+            }
+            responseDriver.json()
+        })
         .then(dataDriver => {
             const driver = dataDriver.result;
 

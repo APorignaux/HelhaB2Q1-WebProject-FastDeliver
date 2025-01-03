@@ -12,6 +12,11 @@ async function fetchPatchDeliveryStatus(deliveryId, status) {
             body: JSON.stringify({ Status: status })
         });
 
+        if(!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Unknown error');
+        }
+
         if(response.ok) {
             const data = response.json();
             console.log("Patch successful:", data);

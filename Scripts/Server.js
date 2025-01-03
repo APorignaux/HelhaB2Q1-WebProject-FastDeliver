@@ -168,7 +168,7 @@ app.get('/Livreur/:email', authenticateToken, (req, res) => {
     });
 });
 
-//----------------------------Login--------------------------------
+//----------------------------Authentication--------------------------------
 
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
@@ -184,11 +184,12 @@ app.post('/login', (req, res) => {
             if (passwordMatch) {
                 //JWT creation
                 const token = jwt.sign({ login: row.Email }, process.env.JWT_ACCESS_SECRET, { expiresIn: "1h" }); //JWT_ACCESS_SECRET is a secret key to create JWT
+                const refreshToken = signRefreshToken(row.Email);
                 if (row.Role === 'Administrateur') {
                     // Authentication successful
-                    res.json({ message: 'Access granted', redirect: '/admin.html' , access_token: token, email: email });
+                    res.json({ message: 'Access granted', redirect: '/admin.html' , access_token: token, refresh_Token : refreshToken, email: email });
                 } else if(row.Role === 'Livreur') {
-                    res.json({ message: 'Access granted', redirect: '/driver-next.html?user=' + email, access_token: token, email: email });
+                    res.json({ message: 'Access granted', redirect: '/driver-next.html?user=' + email, access_token: token, refresh_Token : refreshToken, email: email });
                 } else {
                     res.status(403).send('Access denied');
                 }
@@ -199,19 +200,29 @@ app.post('/login', (req, res) => {
     });
 });
 
+app.post('/refresh', (req, res) => {
+
+});
+
 function authenticateToken(req, res, next) { //this function is middleware
     const tokenHeader = req.headers['authorization'];
     //verify that tokenHeader exist if true store token else store undefined
     const token = tokenHeader.split(' ')[1]; //split the tokenHeader and store the second part
     if (token == null) return res.sendStatus(401);//401 mean no token
 
-    jwt.verify(token, process.env.JWT_ACCESS_SECRET, (err, user) => { //verify if token received match with the token in the server
-        if (err) return res.sendStatus(403);//See that you have a token but it's not (longer) valid
+    jwt.verify(token, process.env.JWT_ACCESS_SECRET, (err, user) => {
+        if (err) return res.status(401).json({ error: 'Invalid or expired token' });
+        if (!user) return res.status(403).json({ error: 'Unauthorized access' });
+
         if (user.login === req.headers.email) {
-            req.user = user; // The decoded token payload
-            next(); //allow to exit the middleware, unvalid token stoped at return and never reach next
+            req.user = user;
+            next();
         }
     });
+}
+
+function signRefreshToken(email) {
+    return jwt.sign({ email: email }, process.env.JWT_REFRESH_SECRET, { expiresIn: '30d' });
 }
 
 //----------------------------SuiviLivraison--------------------------------

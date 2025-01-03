@@ -8,6 +8,12 @@ async function deleteDelivery(element) {
                 'email': localStorage.getItem('email')
             }
         });
+
+        if(!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Unknown error');
+        }
+
         const data = await response.json();
 
         if (response.ok) {

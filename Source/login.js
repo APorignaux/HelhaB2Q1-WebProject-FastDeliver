@@ -13,10 +13,16 @@ document.querySelector('form').addEventListener('submit', async function(event) 
         body: JSON.stringify(data)
     });
 
+    if(!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Unknown error');
+    }
+
     const result = await response.json();
     console.log(result);
     if (response.ok) {
         localStorage.setItem('authtoken', result.access_token);
+        localStorage.setItem('refreshToken', result.refresh_Token);
         localStorage.setItem('email', result.email);
         window.location.href = result.redirect; // Redirect to the URL specified in the response
         alert("Login successful");

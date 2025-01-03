@@ -3,8 +3,11 @@ const currentDeliverycore = document.body.querySelector('#current-delivery-core-
 const currentDeliveryDiv = document.body.querySelector('#currentDeliveryDiv');
 const currentDeliveryId = document.body.querySelector('#packageNumber');
 
+const noDeliveryDiv = document.body.querySelector('#NoDeliveriesDiv');
+
 const nextDeliveryTemplate = document.body.querySelector('#nextDeliveryTemplate');
 const nextDeliveryCore = document.body.querySelector('#next-delivery-core-info');
+const nextDeliveryDiv = document.body.querySelector('#nextDeliveryDiv');
 
 const url = new URL(window.location.href);
 const params = new URLSearchParams(url.search);
@@ -18,6 +21,12 @@ async function fetchCurrentDelivery() {
             'email' : livreurMail
         }
     });
+
+    if(!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Unknown error');
+    }
+
     const DeliveryData = await response.json();
     const delivery = DeliveryData.results;
     let driverDeliveries = [];
@@ -28,19 +37,34 @@ async function fetchCurrentDelivery() {
             'email' : livreurMail
         }
     });
+
+    if(!responseClient.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Unknown error');
+    }
+
     const ClientData = await responseClient.json();
     const client = ClientData.results;
     let currentClient = undefined;
-
+    console.log(delivery);
     //chercher dans les livraisons celle qui appartient au livreur connecté et la plus recente
     Object.values(delivery).forEach(deliveryItem => {       //Object.value() fais une liste avec un JSON Output: ['John', 30, 'New York']
-        if (deliveryItem.Livreur === livreurMail && deliveryItem.Status !== 'Livré' && deliveryItem.Status !== 'Problème') {         //deliveryItem représente une paire clé-valeur ex,  Livreur: 'emma@fastdeliver.com'
+        if (deliveryItem.Livreur == livreurMail && deliveryItem.Status !== 'Livré' && deliveryItem.Status !== 'Problème') {         //deliveryItem représente une paire clé-valeur ex,  Livreur: 'emma@fastdeliver.com'
             driverDeliveries.push(deliveryItem);
         }
     });
+
+    if (driverDeliveries.length === 0) {
+        noDeliveryDiv.classList.remove('hidden');
+        currentDeliveryDiv.classList.add('hidden');
+        nextDeliveryDiv.classList.add('hidden');
+        console.log('No current deliveries found for the driver.');
+        return;
+    }
+
     // Sort deliveries by date from earliest to latest
     driverDeliveries.sort((a, b) => new Date(a.Date) - new Date(b.Date));
-
+    console.log(driverDeliveries);
     // fill current delivery
 
     const currentDelivery = driverDeliveries[0];
@@ -79,6 +103,12 @@ async function fetchNextDelivery() {
             'email' : livreurMail
         }
     });
+
+    if(!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Unknown error');
+    }
+
     const DeliveryData = await response.json();
     let delivery = DeliveryData.results;
 
@@ -103,24 +133,6 @@ async function fetchNextDelivery() {
         nextDeliveryCore.appendChild(nextDeliveryRow);
     }
 
-}
-
-//----test
-async function fetchAllDeliveries() {
-    try {
-        const response = await fetch('/Livraisons');
-        if (response.ok) {
-            const deliveryData = await response.json();
-            console.log(deliveryData.results);
-            return deliveryData.results;
-        } else {
-            console.error("Failed to fetch deliveries:", response.statusText);
-            return [];
-        }
-    } catch (err) {
-        console.error("Error:", err);
-        return [];
-    }
 }
 
 window.onload = function() {

@@ -19,6 +19,12 @@ async function fillThePage(){
             'email': localStorage.getItem('email')
         }
     });
+
+    if (!response.ok) {
+        const errorData = await responseDriver.json();
+        throw new Error(errorData.error || 'Unknown error');
+    }
+
     const responseData = await response.json();
     const deliveryTrack = responseData.results;
 
